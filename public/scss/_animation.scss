@@ -1,0 +1,57 @@
+@keyframes slider {
+  10% {
+    transform: translateX(0px);
+  }
+  45% {
+    transform: translateX(-750px);
+  }
+  90% {
+    transform: translateX(-1500px);
+  }
+}
+@mixin sliderAnimation {
+  animation-name: slider;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+@keyframes animationSupportWeb {
+}
+@keyframes animationScrollShowCheckOut {
+  0% {
+    height: 0;
+  }
+  20% {
+    height: 80.2px;
+  }
+  40% {
+    height: 160.4px;
+  }
+  60% {
+    height: 240.4px;
+  }
+  80% {
+    height: 320.6px;
+  }
+  100% {
+    height: 401px;
+  }
+}
+.showFilterProductSearch {
+  animation: showFilterProductSearch 0.6s ease-in;
+}
+@keyframes showFilterProductSearch {
+  from {
+    left: -240px;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

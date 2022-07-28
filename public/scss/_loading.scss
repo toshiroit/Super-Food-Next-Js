@@ -1,0 +1,25 @@
+@import "./color";
+.loading-ellipsis {
+  .lds-dual-ring {
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 2px solid $sp-color-text-primary;
+    border-color: $sp-color-text-primary transparent $sp-color-text-primary
+      transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
