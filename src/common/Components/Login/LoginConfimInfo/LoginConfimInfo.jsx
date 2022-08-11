@@ -26,6 +26,7 @@ export default function LoginConfimInfo() {
     userName: "",
     passWord: "",
     passWord1: "",
+    isError: true
 
   })
   const validate = (values) => {
@@ -154,8 +155,9 @@ export default function LoginConfimInfo() {
   };
   const onConfimRegsiter = (e) => {
     e.preventDefault();
-    validate(userConfirm)
-    if (!formError.isError) {
+
+
+    if (!validate(userConfirm).isError) {
       dispatch(confirmRegUser({ valueUser: userConfirm }))
       dispatch(hideDisplay());
       router.push("/")
