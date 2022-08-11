@@ -26,22 +26,13 @@ export default function Footer() {
                 </div>
                 <ul className="bell__right___main">
                   <li className="bell__right___main____item">
-                    <img
-                      src="https://cdn.pixabay.com/photo/2021/05/22/11/38/yt-6273367_1280.png"
-                      alt=""
-                    />
+                    <img src="./images/youtube.png" alt="" />
                   </li>
                   <li className="bell__right___main____item">
-                    <img
-                      src="https://cdn.pixabay.com/photo/2021/05/22/11/38/yt-6273367_1280.png"
-                      alt=""
-                    />
+                    <img src="./images/facebook.png" alt="" />
                   </li>
                   <li className="bell__right___main____item">
-                    <img
-                      src="https://cdn.pixabay.com/photo/2021/05/22/11/38/yt-6273367_1280.png"
-                      alt=""
-                    />
+                    <img src="./images/twitter.webp" alt="" />
                   </li>
                 </ul>
               </div>

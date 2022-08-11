@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const make_slide = (amountSlideAppear) => {
   if (giftContent) {
     const widthItemAndMargin = giftContent.offsetWidth / amountSlideAppear;
+
     let widthAllBox = widthItemAndMargin * listBox.length;
-    console.log(widthAllBox);
+    // console.log(widthAllBox);
     wrapperBox.style.width = `${widthAllBox}px`;
     listBox.forEach((element) => {
       element.style.marginRight = "20px";
@@ -41,9 +42,12 @@ const make_slide = (amountSlideAppear) => {
     //handle Slide
 
     let count = 0;
+
     let spacing = widthAllBox - amountSlideAppear * widthItemAndMargin;
+
     btnRight.addEventListener("click", () => {
       count += widthItemAndMargin;
+
       if (count > spacing) {
         count = 0;
       }
