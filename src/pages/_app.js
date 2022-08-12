@@ -1,6 +1,7 @@
 import Header from "../common/Components/Header/Header";
 import Footer from "../common/Components/Footer/Footer";
 import "../../styles/Loader.io.css";
+import "../../styles/main.scss"
 import { store, wrapper } from "../common/redux/store/store";
 import { Provider } from "react-redux";
 import { useRouter } from "next/router";

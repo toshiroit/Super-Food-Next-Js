@@ -135,6 +135,34 @@
     transform: scale(1.2);
   }
 }
+@keyframes showOpacity{
+  from {
+    opacity:0;
+    
+  }
+  to{
+    opacity:1;
+  }
+}
+@keyframes hideOpacity{
+  from {
+    opacity:1;
+    
+  }
+  to{
+    opacity:0;
+  }
+}
+.showFormOpacity {
+  //display:flex !important;
+  visibility:visible;
+  animation: showOpacity 0.3s ease-in;
+}
+.hideFormOpacity {
+  //display:none !important;
+  visibility:hidden;
+  animation: hideOpacity 0.3s forwards;
+}
 .isActiveMrrTopAdm {
   visibility: visible !important;
   animation-name: isActiveMrrTopAdm;
@@ -142,6 +170,7 @@
   transform: translateY(-1px);
   animation-duration: 0.3s;
 }
+
 .showAddCategoryAdmin {
   visibility: visible !important;
   animation-name: showAddCategoryAdmin;

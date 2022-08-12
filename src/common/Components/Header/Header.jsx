@@ -2,23 +2,42 @@ import Link from "next/link";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouterLinkConfig } from "../../constants/RouterLink";
-import {
-  showDisplay,
-  hideDisplay,
-} from "../../redux/features/showDisplay/showDisplaySlice";
+import { showDisplay, } from "../../redux/features/showDisplay/showDisplaySlice";
+import { showMenuMobileDisplay } from "../../redux/features/showDisplay/showMenuMobile";
 
 import Login from "../Login/Login";
+import MenuMoble from "../MenuMobile/MenuMobile";
+import Search from "./Search/Search";
 
 export default function Header() {
+  /** isDisplay Show Form Login (Redux) **/
   const isDisplayLogin = useSelector((state) => state.showDisplaySlice.display);
+
+  /** isDisplayShowMobile Show Menu Mobile (Redux) **/
+  const isDisplayMenuMobile = useSelector(state => state.showMenuMobile.display)
+
+  const [user] = useState(null)
   const dispatch = useDispatch();
-  const [showLogin, setLogin] = useState(false);
-  const isShowLogin = (isDisplay) => {
+
+
+  /**OnClick Show Menu Mobile **/
+  const onShowMenuMobile = () => {
+    dispatch(showMenuMobileDisplay())
+  }
+
+  /**OnClick Show Form Login **/
+  const isShowLogin = () => {
     dispatch(showDisplay());
   };
+
   return (
     <>
-      {isDisplayLogin ? <Login /> : <> </>}
+      {
+        <div className={isDisplayLogin ? "fixedLogin showFormOpacity" : "fixedLogin hideFormOpacity"}>
+          <Login />
+        </div>
+      }
+      {isDisplayMenuMobile ? <MenuMoble /> : ""}
       <div className="navbar">
         <div className="navbar__top">
           <div className="container">
@@ -49,8 +68,11 @@ export default function Header() {
               </li>
               <li className="topbar__item language">
                 <picture>
-                  <img src="/images/vi_VN.png" className="img-language" alt="" />
-
+                  <img
+                    src="/images/vi_VN.png"
+                    className="img-language"
+                    alt=""
+                  />
                 </picture>
                 <p className="topbar__item___text">Việt nam</p>
                 <i className="fa-solid fa-caret-down fa-size fa-scale-1" />
@@ -126,84 +148,14 @@ export default function Header() {
                       <p>Báo lỗi</p>
                     </li>
                   </ul>
-                  <div className="search">
-                    <input
-                      type="search"
-                      name=""
-                      placeholder="Tìm kiếm sản phẩm ........... "
-                      id=""
-                    />
-                    <i className="fa-solid fa-magnifying-glass fa-size fa-search-sett" />
-                    <div className="search__list" style={{ display: "none" }}>
-                      <div className="wp">
-                        <div className="title">
-                          <i className="fa-solid fa-signature" />
-                          Tìm kiếm sản phẩm
-                        </div>
-                        <ul className="search__list___wp">
-                          <li className="search__list___wp____item">
-                            <div className="text">
-                              <i className="fa-solid fa-magnifying-glass fa-size" />
-                              <p>Tai nghe chơi game gaming</p>
-                            </div>
-                            <i className="fa-solid fa-xmark" />
-                          </li>
-                          <div className="search__list___wp____show">
-                            <p>Xem thêm</p>
-                            <i className="fa-solid fa-chevron-down fa-size" />
-                          </div>
-                        </ul>
-                      </div>
-                      <div className="wp">
-                        <div className="title">
-                          <i className="fa-solid fa-font" />
-                          Từ khóa tìm kiếm phổ biến
-                        </div>
-                        <ul className="keyword">
-                          <li className="keyword__item">Sản phẩm hot</li>
-                          <li className="keyword__item">Sản phẩm hot</li>
-                          <li className="keyword__item">
-                            Sản phẩm đang bán chạy
-                          </li>
-                          <li className="keyword__item">Gà đông tảo</li>
-                          <li className="keyword__item">Trà sữa</li>
-                          <li className="keyword__item">Cơm chiên</li>
-                          <li className="keyword__item">Cơm sinh viên</li>
-                          <li className="keyword__item">Cơm 0đ</li>
-                        </ul>
-                      </div>
-                      <div className="wp">
-                        <div className="title">
-                          <i className="fa-solid fa-list" /> Danh mục phổ biến
-                        </div>
-                        <ul className="category">
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                          <li className="category__item">
-                            <span>Lẩu gia đình </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  <Search />
                 </div>
               </div>
+
               <div className="bottombar__right">
                 <div className="bottombar__right___userMobile">
-                  <div id="menuFixedRootIdx" className="menu">
+                  {/*"menuFixedRootIdx"*/}
+                  <div onClick={onShowMenuMobile} id="" className="menu">
                     <i className="fa-solid fa-bars fa-size" />
                   </div>
                 </div>
@@ -218,49 +170,55 @@ export default function Header() {
                     </a>
                   </Link>
                   <div className="text user">
-                    <div onClick={() => isShowLogin(true)} className="owp-w1">
-                      <i className="fa-size fa-solid fa-user" />
-                      <span>Tài khoản</span>
-                    </div>
-                    {/* <div className="owp-w1 login-active">
-                      <i className="fa-size fa-solid fa-user" />
-                      <div className="inner">
-                        <span className="name">Đâu Văn Nam </span>
-                        <div className="woi">
-                          <li className="woi__item">Số dư : 0</li>
+                    {
+                      user ? <div className="owp-w1 login-active">
+                        <i className="fa-size fa-solid fa-user" />
+                        <div className="inner">
+                          <span className="name">Đâu Văn Nam </span>
+                          <div className="woi">
+                            <li className="woi__item">Số dư : 0</li>
+                          </div>
                         </div>
+                        <ul className="info">
+                          <li className="info__item">
+                            <i className="fa-solid fa-info fa-size-1" />
+                            <p>Thông tin tài khoản</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Quản lí thanh toán</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Quản lí địa chỉ</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Quản lí thông tin</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Đồng bộ</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Nạp tiền +</p>
+                          </li>
+                          <li className="info__item">
+                            <i className="fa-solid fa-credit-card fa-size-1" />
+                            <p>Quản lí thanh toán</p>
+                          </li>
+                        </ul>
                       </div>
-                      <ul className="info">
-                        <li className="info__item">
-                          <i className="fa-solid fa-info fa-size-1" />
-                          <p>Thông tin tài khoản</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Quản lí thanh toán</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Quản lí địa chỉ</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Quản lí thông tin</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Đồng bộ</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Nạp tiền +</p>
-                        </li>
-                        <li className="info__item">
-                          <i className="fa-solid fa-credit-card fa-size-1" />
-                          <p>Quản lí thanh toán</p>
-                        </li>
-                      </ul>
-                    </div> */}
+                        : <div onClick={() => isShowLogin(true)} className="owp-w1">
+                          <i className="fa-size fa-solid fa-user" />
+                          <span>Tài khoản</span>
+                        </div>
+                    }
+                    {/* 
+                   
+                      */}
+
                   </div>
                 </div>
               </div>

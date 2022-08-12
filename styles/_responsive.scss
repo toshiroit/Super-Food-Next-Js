@@ -42,7 +42,7 @@
 }
 @media only screen and (max-width: 66px) {
 }
-@media only screen and(max-width:870px) {
+@media only screen and (max-width:870px) {
   .product {
     &__wp {
       &___item {
@@ -51,7 +51,7 @@
     }
   }
 }
-@media only screen and(max-width:895px) {
+@media only screen and (max-width:895px) {
   .product {
     &__wp {
       &___item {
@@ -306,7 +306,7 @@
     }
   }
 }
-@media only screen and(max-width:636px) {
+@media only screen and (max-width:636px) {
   .banner {
     &__image {
       &___w2 {
@@ -317,7 +317,7 @@
     }
   }
 }
-@media only screen and(max-width:394px) {
+@media only screen and (max-width:394px) {
   .banner {
     &__image {
       &___w2 {
@@ -496,7 +496,7 @@
     }
   }
 }
-@media only screen and(max-width:942px) {
+@media only screen and (max-width:942px) {
   .search {
     &__content {
       &___flex {
@@ -524,7 +524,7 @@
     }
   }
 }
-@media only screen and(max-width:804px) {
+@media only screen and (max-width:804px) {
   .bodyIdx {
     .category {
       &__list {
@@ -535,7 +535,7 @@
     }
   }
 }
-@media only screen and(max-width:673px) {
+@media only screen and (max-width:673px) {
   .bodyIdx {
     .category {
       &__list {
@@ -546,7 +546,7 @@
     }
   }
 }
-@media only screen and(max-width:539px) {
+@media only screen and (max-width:539px) {
   .bodyIdx {
     .category {
       &__list {
@@ -557,7 +557,7 @@
     }
   }
 }
-@media only screen and(max-width:453px) {
+@media only screen and (max-width:453px) {
   .bodyIdx {
     .category {
       &__list {
@@ -568,7 +568,7 @@
     }
   }
 }
-@media only screen and(max-width:339px) {
+@media only screen and (max-width:339px) {
   .bodyIdx {
     .category {
       &__list {
@@ -598,7 +598,7 @@
     }
   }
 }
-@media only screen and(max-width:615px) {
+@media only screen and (max-width:615px) {
   .search {
     &__content {
       &___flex {
@@ -656,7 +656,7 @@
     }
   }
 }
-@media only screen and(max-width:500px) {
+@media only screen and (max-width:500px) {
   .user {
     &__content {
       &___flex {
@@ -765,7 +765,7 @@
     }
   }
 }
-@media only screen and(max-width:947px) {
+@media only screen and (max-width:947px) {
   .user {
     &__content {
       &___flex {
@@ -784,7 +784,7 @@
     }
   }
 }
-@media only screen and(max-width:576px) {
+@media only screen and (max-width:576px) {
   .user {
     &__content {
       &___flex {
@@ -1550,7 +1550,7 @@
     }
   }
 }
-@media only screen and(max-width:1388px) {
+@media only screen and (max-width:1388px) {
   .wrapperAdmin {
     .page__main {
       .content__category___main {
@@ -1782,4 +1782,21 @@
       }
     }
   }
+}
+@media only screen and (max-width:721px){
+.navbar {
+   &__bottom {
+      .bottombar {
+        &__left {
+          &___group {
+            #searchList{
+              .search__list{
+                display:none;
+              }
+            } 
+          }     
+        }
+      }
+    }
+ }
 }

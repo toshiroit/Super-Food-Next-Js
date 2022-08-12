@@ -6,20 +6,25 @@ import LoginForm from "./LoginForm/LoginForm";
 
 export default function Login() {
   const isLogin = useSelector((state) => state.UserSlice);
+  const isDisplayLogin = useSelector((state) => state.showDisplaySlice.display);
+
+
   const data = useRef()
 
   return (
     <>
-      {isLogin.isPhoneLogin && isLogin.isSendCode ? (
-        isLogin.isCheckCode ?
-          (
-            <LoginConfimInfo />
-          )
-          : < LoginCode />
+      {
+        isLogin.isPhoneLogin && isLogin.isSendCode ? (
+          isLogin.isCheckCode ?
+            (
+              <LoginConfimInfo />
+            )
+            : < LoginCode />
 
-      ) : (
-        <LoginForm />
-      )}
+        ) : (
+          <LoginForm />
+        )
+      }
     </>
   );
 }

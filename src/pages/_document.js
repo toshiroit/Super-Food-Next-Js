@@ -10,8 +10,9 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="stylesheet" href="/scss/main.css" />
+        {/*  <link rel="stylesheet" href="/scss/main.css" />*/}
         <link rel="stylesheet" href="/plugins/fontawesome.6.1.1/css/all.css" />
+
         <link rel="shortcut icon" href="/images/logo1.jpg" />
 
         <script src="/plugins/lordicon/xdjxvujz.js"></script>

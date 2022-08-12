@@ -210,7 +210,7 @@ a {
   }
 }
 .menuFixedIdx {
-  display: none;
+  //display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -454,12 +454,13 @@ a {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99999;
   display: flex;
+  transition: all 0.3s;
   &__inner {
     position: relative;
     margin: auto;
     background-color: $sp-background-color-white;
     border-radius: 8px;
-    padding: 24px 96px;
+    padding: 10px;
     width: 675px;
     max-height: 100%;
     overflow-y: scroll;
@@ -631,6 +632,7 @@ a {
         width: 100%;
         text-align: center;
         font-size: 0.96rem;
+
         cursor: pointer;
       }
     }

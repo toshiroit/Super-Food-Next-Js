@@ -5,7 +5,6 @@ export default function Product({ products }) {
       <div className="product__wp">
         {products &&
           products.map((item, index) => {
-
             return (
               <ProductItem
                 key={index}

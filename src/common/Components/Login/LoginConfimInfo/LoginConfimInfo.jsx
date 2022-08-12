@@ -155,8 +155,6 @@ export default function LoginConfimInfo() {
   };
   const onConfimRegsiter = (e) => {
     e.preventDefault();
-
-
     if (!validate(userConfirm).isError) {
       dispatch(confirmRegUser({ valueUser: userConfirm }))
       dispatch(hideDisplay());

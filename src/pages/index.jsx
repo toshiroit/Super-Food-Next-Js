@@ -3,9 +3,9 @@ import Banner from "../common/Components/Banner/Banner";
 import ProductTopMenu from "../common/Components/Product/ProductTopMenu";
 import ProductIdx from "../common/Components/Product/ProductIdx";
 import Trademark from "../common/Components/Trademark/Trademark";
-import RouterLink from "../common/constants/RouterLink";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 export default function Home() {
   const [product, setProduct] = useState(null);

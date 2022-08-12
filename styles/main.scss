@@ -14,7 +14,7 @@ ul {
   text-decoration: none;
 }
 html {
-  // scroll-behavior: smooth;
+  //scroll-behavior: smooth;
 }
 * {
   padding: 0;
@@ -197,7 +197,7 @@ html {
                 border-radius: 4px;
                 background-color: $sp-background-color-white;
                 width: 100%;
-                z-index: 999;
+                z-index: 9999;
                 top: 45px;
                 .wp {
                   .category {
@@ -2031,9 +2031,15 @@ html {
                 display: inline-block;
                 padding: 4px 8px;
                 border-radius: 4px;
+                cursor:pointer;
+                margin-right:30px;
+                margin-bottom:15px;
                 background-color: #e5e5e5;
                 border: 1px solid #ddd;
                 position: relative;
+                &:last-child{
+                  margin-right:0;
+                }
                 span {
                   font-size: 0.85rem;
                   b {
@@ -2098,6 +2104,7 @@ html {
                   font-weight: 500;
                   font-size: 0.9rem;
                   color: #686868;
+
                   position: relative;
                   &::after {
                     content: "\f107";
@@ -2109,13 +2116,14 @@ html {
                     position: absolute;
                   }
                   .areaList {
-                    display: none;
                     position: absolute;
+                    visibility:hidden;
+                    display: flex;
                     z-index: 9999;
                     background-color: $sp-background-color-white;
                     padding: 5px;
-                    width: 700px;
-                    height: 250px;
+                    max-width: 700px;
+                    max-height: 250px;
                     box-shadow: 0 0 3.1px #000;
                     border-radius: 3px;
                     top: 37px;
@@ -2130,7 +2138,7 @@ html {
                     &__item {
                       margin: 9px;
                       display: inline-block;
-                      width: calc(33.3333% - 27px);
+                      width: 120px;
                       .w {
                         display: flex;
                         align-items: flex-start;
@@ -5780,7 +5788,7 @@ html {
       left: 0;
       right: 0;
 
-      background: url(../images/admin-shop.jpg);
+      background: url(/images/admin-shop.jpg);
       width: 100%;
       height: 100%;
       background-repeat: no-repeat;
@@ -8852,7 +8860,7 @@ html {
               }
             }
             & > .right {
-              background: url(../images/admin-background.jpg);
+              background: url(/images/admin-background.jpg);
               width: calc(80% - 20px);
 
               background-repeat: no-repeat;
