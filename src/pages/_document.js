@@ -14,7 +14,9 @@ export default function Document() {
         <link rel="stylesheet" href="/plugins/fontawesome.6.1.1/css/all.css" />
 
         <link rel="shortcut icon" href="/images/logo1.jpg" />
-
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display&display=swap" rel="stylesheet" />
         <script src="/plugins/lordicon/xdjxvujz.js"></script>
         <script src="/plugins/jquery.3.6.0/query-3.6.0.min.js"></script>
       </Head>

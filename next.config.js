@@ -1,10 +1,22 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: false,
-  images: {
-    domains: ["http://localhost:3000/"],
-  },
-};
 
-module.exports = nextConfig;
+module.exports = async (phase, { defaultConfig }) => {
+  /**
+   * @type {import('next').NextConfig}
+   */
+  const nextConfig = {
+    /* config options here */
+    reactStrictMode: true,
+    swcMinify: false,
+    images: {
+      domains: ["http://localhost:3000/"],
+    },
+  }
+  return nextConfig
+}
+
+
+
+
+
+

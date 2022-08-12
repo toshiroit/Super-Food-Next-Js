@@ -978,3 +978,14 @@ a {
     }
   }
 }
+.navBarWebFixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    visibility:hidden;
+    z-index: 1111;
+    transition: all 0.3s;
+    .navbar__top{
+      display:none;
+    }
+}

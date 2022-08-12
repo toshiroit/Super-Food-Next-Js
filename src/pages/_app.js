@@ -7,11 +7,12 @@ import { Provider } from "react-redux";
 import { useRouter } from "next/router";
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
-
   return (
+
     <Provider store={store}>
       <div id="body" className="wrapper">
         <div className="desktop supership">
+          {/* Check Router Checkout -> disable Header and Footer */}
           {router.asPath === "/checkout" ? (
             <Component {...pageProps} />
           ) : (

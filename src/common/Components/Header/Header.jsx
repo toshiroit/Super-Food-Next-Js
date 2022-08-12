@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouterLinkConfig } from "../../constants/RouterLink";
 import { showDisplay, } from "../../redux/features/showDisplay/showDisplaySlice";
@@ -16,9 +16,22 @@ export default function Header() {
   /** isDisplayShowMobile Show Menu Mobile (Redux) **/
   const isDisplayMenuMobile = useSelector(state => state.showMenuMobile.display)
 
+
   const [user] = useState(null)
   const dispatch = useDispatch();
 
+  /*Get Scroll*/
+  const [hegihtScroll, setHeightScroll] = useState();
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setHeightScroll(position);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [hegihtScroll])
 
   /**OnClick Show Menu Mobile **/
   const onShowMenuMobile = () => {
@@ -38,7 +51,7 @@ export default function Header() {
         </div>
       }
       {isDisplayMenuMobile ? <MenuMoble /> : ""}
-      <div className="navbar">
+      <div className={hegihtScroll && hegihtScroll >= 172 ? 'navbar navBarWebFixed showFormOpacity' : 'navbar'}>
         <div className="navbar__top">
           <div className="container">
             <ul className="topbar">
