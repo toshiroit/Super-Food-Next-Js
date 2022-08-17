@@ -6,9 +6,8 @@ import Trademark from "../common/Components/Trademark/Trademark";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     const fetchProduct = async () => {
       const data = await axios
@@ -17,9 +16,11 @@ export default function Home() {
           return res.data;
         })
         .catch((err) => {
-          return err;
+          return err.message;
         });
-      setProduct(data);
+      if (data) {
+        setProduct(data);
+      }
     };
     fetchProduct();
   }, []);

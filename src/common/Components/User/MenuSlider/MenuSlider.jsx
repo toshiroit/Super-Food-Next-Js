@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { RouterLinkConfig } from "../../../constants/RouterLink";
 
 export default function MenuSlider() {
   return (
@@ -9,7 +10,7 @@ export default function MenuSlider() {
           <div className="nameFx">
             <span>Tài khoản </span>
           </div>
-          <Link href={"/user/info"}>
+          <Link href={RouterLinkConfig.userInfo()}>
             <a>
               <li className="content__main___wp____item">
                 <i className="fa-solid fa-house-user fa-size" />
@@ -17,7 +18,7 @@ export default function MenuSlider() {
               </li>
             </a>
           </Link>
-          <Link href={"/user/shop"}>
+          <Link href={RouterLinkConfig.userShop()}>
             <a>
               <li className="content__main___wp____item">
                 <i className="fa-solid fa-shop fa-size" />
@@ -25,7 +26,7 @@ export default function MenuSlider() {
               </li>
             </a>
           </Link>
-          <Link href={"/user/price"}>
+          <Link href={RouterLinkConfig.userPrice()}>
             <a>
               <li className="content__main___wp____item">
                 <i className="fa-solid fa-money-bill fa-size" />
@@ -38,7 +39,7 @@ export default function MenuSlider() {
           <div className="nameFx">
             <span>Giao dịch </span>
           </div>
-          <Link href={"/user/order"}>
+          <Link href={RouterLinkConfig.userOrder()}>
             <a>
               <li className="content__main___wp____item">
                 <i className="fa-solid fa-truck-fast fa-size" />
@@ -58,46 +59,48 @@ export default function MenuSlider() {
         </div>
         <div className="content__main___wp">
           <div className="nameFx">
-            <span>Địa chỉ / Thanh toán </span>
+            <span>Địa chỉ và thanh toán  </span>
           </div>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Địa chỉ thanh toán </span>
-          </li>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
+          <Link href={RouterLinkConfig.userAddress()}>
+            <li className="content__main___wp____item">
+              <i className="fa-solid fa-location-dot fa-size" />
+              <span>Địa chỉ thanh toán </span>
+            </li>
+          </Link>
         </div>
         <div className="content__main___wp">
           <div className="nameFx">
             <span>Bảo mật </span>
           </div>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
+          <Link href={RouterLinkConfig.userSecurity()}>
+            <a>
+              <li className="content__main___wp____item">
+                <i className="fa-solid fa-shield fa-size" />
+                <span>Thông tin bảo mật  </span>
+              </li>
+            </a>
+          </Link>
+          <Link href={RouterLinkConfig.userSecuritySetting()}>
+            <a>
+              <li className="content__main___wp____item">
+                <i className="fa-solid fa-file-shield fa-size" />
+                <span>Cài đặt bảo mật </span>
+              </li>
+            </a>
+          </Link>
         </div>
         <div className="content__main___wp">
           <div className="nameFx">
             <span>Thông báo </span>
           </div>
-          <li className="content__main___wp____item">
-            <i className="fa-solid fa-house-user fa-size" />
-            <span>Thông tin tài khoản </span>
-          </li>
+          <Link href={RouterLinkConfig.userNotify()}>
+            <a>
+              <li className="content__main___wp____item">
+                <i className="fa-solid fa-envelope-open-text fa-size" />
+                <span>Thông báo  </span>
+              </li>
+            </a>
+          </Link>
           <li className="content__main___wp____item">
             <i className="fa-solid fa-house-user fa-size" />
             <span>Thông tin tài khoản </span>

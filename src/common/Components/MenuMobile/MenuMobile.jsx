@@ -1,42 +1,42 @@
-import Link from "next/link"
-import { Router, useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import useQuery from "../../modules/useQuery/useQuery"
-import { showDisplay } from "../../redux/features/showDisplay/showDisplaySlice"
-import { hideMenuMobileDisplay } from "../../redux/features/showDisplay/showMenuMobile"
+import Link from "next/link";
+import { Router, useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import useQuery from "../../lib/useQuery/useQuery";
 
+import { showDisplay } from "../../redux/features/showDisplay/showDisplaySlice";
+import { hideMenuMobileDisplay } from "../../redux/features/showDisplay/showMenuMobile";
 
-
-
-export default function MenuMoble() {
-  const dispatch = useDispatch()
+export default function MenuMobile() {
+  const dispatch = useDispatch();
   const router = useRouter();
 
   /* Get Value Router at this time*/
   const [routerQueryV1] = useState({
-    v1: router.query
-  })
-
+    v1: router.query,
+  });
 
   useEffect(() => {
     /** Check Router is it different? **/
     /** If different, turn off Menu **/
     if (router.query !== routerQueryV1.v1) {
-
-      dispatch(hideMenuMobileDisplay())
+      dispatch(hideMenuMobileDisplay());
     }
   }, [routerQueryV1, router.query, dispatch]);
 
   /* OnCLick Show FormLogin and Hide Menu Mobile */
   const showLogin = () => {
-    dispatch(hideMenuMobileDisplay())
-    dispatch(showDisplay())
-  }
+    dispatch(hideMenuMobileDisplay());
+    dispatch(showDisplay());
+  };
   return (
     <div className="menuFixedIdx">
       <div className="menuFixedIdx__inner">
-        <div id="closeMenuFixedRootIdx" onClick={() => dispatch(hideMenuMobileDisplay())} className="close">
+        <div
+          id="closeMenuFixedRootIdx"
+          onClick={() => dispatch(hideMenuMobileDisplay())}
+          className="close"
+        >
           <i className="fa-solid fa-circle-xmark fa-size" />
         </div>
         <div className="menuFixedIdx__inner___header">
@@ -159,6 +159,5 @@ export default function MenuMoble() {
         </ul>
       </div>
     </div>
-
-  )
+  );
 }

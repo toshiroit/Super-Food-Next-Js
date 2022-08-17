@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import useWindowSize from "../../modules/WindowSize/WindowSize";
+import useWindowSize from "../../lib/WindowSize/WindowSize";
+
 import MenuSlider from "./MenuSlider/MenuSlider";
 
 export default function User({ isActive, children }) {

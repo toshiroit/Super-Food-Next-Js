@@ -1,27 +1,28 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { LocalStorage } from "../../modules/Localstorage/Localstorage";
+import { LocalStorage } from "../../lib/Localstorage/Localstorage";
+
 import Product from "../Product/Product";
 
 export default function Search() {
-  const router = useRouter()
+  const router = useRouter();
   const [product, setProduct] = useState(null);
-  const [keyWord, setKeyWord] = useState(null)
+  const [keyWord, setKeyWord] = useState(null);
 
   /*Is Show Filter Product */
-  const [isShowFliterArea, setIsShowFilterArea] = useState(false)
-  const [isShowFliterCategory, setIsShowFilterCategory] = useState(false)
+  const [isShowFilterArea, setIsShowFilterArea] = useState(false);
+  const [isShowFilterCategory, setIsShowFilterCategory] = useState(false);
 
   /* Get Value Filter Procduct Search */
   const [valueFilter, setValueFilter] = useState({
     area: [],
-    category: []
-  })
+    category: [],
+  });
   useEffect(() => {
-    let result = []
+    let result = [];
     /**Get keyword LocalStorage user */
-    setKeyWord(JSON.parse(LocalStorage('keywordSearch', null, "GET")))
+    setKeyWord(JSON.parse(LocalStorage("keywordSearch", null, "GET")));
 
     /** Fetch Data MockApi Test **/
     const fetchProduct = async () => {
@@ -35,69 +36,64 @@ export default function Search() {
         });
       data.map((item, index) => {
         if (router.query.name) {
-          if (item.name.toLowerCase().includes(router.query.name.toLowerCase())) {
-            result.push(item)
+          if (
+            item.name.toLowerCase().includes(router.query.name.toLowerCase())
+          ) {
+            result.push(item);
           }
         }
-      })
+      });
       setProduct(result);
-
     };
     fetchProduct();
   }, [router.query]);
-  useEffect(() => {
-  }, [])
+  useEffect(() => {}, []);
   /* OnChange Get Value Filter */
   const onChangeFilter = (e) => {
-    if (e.target.name === 'area') {
+    if (e.target.name === "area") {
       setValueFilter({
         ...valueFilter,
-        area: [...valueFilter.area, e.target.value]
-      })
-    }
-    else if (e.target.name === 'category') {
-      let fkCategory = [...valueFilter.category]
+        area: [...valueFilter.area, e.target.value],
+      });
+    } else if (e.target.name === "category") {
+      let fkCategory = [...valueFilter.category];
       if (fkCategory.length === 0) {
         setValueFilter({
           ...valueFilter,
-          category: [...valueFilter.category, e.target.value]
-
-        })
-      }
-      else {
+          category: [...valueFilter.category, e.target.value],
+        });
+      } else {
         setValueFilter({
           ...valueFilter,
-          category: [...valueFilter.category, e.target.value]
-        })
+          category: [...valueFilter.category, e.target.value],
+        });
       }
     }
-
-  }
+  };
 
   /** Remove keyword search Page **/
   const onRemoveKeywordSearch = (item) => {
-    LocalStorage('keywordSearch', item, 'REMOVE');
-    setKeyWord(JSON.parse(LocalStorage('keywordSearch', null, "GET")))
-  }
+    LocalStorage("keywordSearch", item, "REMOVE");
+    setKeyWord(JSON.parse(LocalStorage("keywordSearch", null, "GET")));
+  };
 
   /* On Fliter Submit */
   const onFilterProduct = () => {
     let result = {
       filterArea: Array.from(new Set(valueFilter.area)),
-      filterCategory: Array.from(new Set(valueFilter.category))
-    }
-
-  }
+      filterCategory: Array.from(new Set(valueFilter.category)),
+    };
+  };
   /* On Show filter */
   const onShowFilter = (value) => {
-    if (value === 'area') {
-      setIsShowFilterCategory(false)
-      setIsShowFilterArea(!isShowFliterArea)
-    } else if (value === 'category') {
-      setIsShowFilterArea(false)
-      setIsShowFilterCategory(!isShowFliterCategory)
+    if (value === "area") {
+      setIsShowFilterCategory(false);
+      setIsShowFilterArea(!isShowFilterArea);
+    } else if (value === "category") {
+      setIsShowFilterArea(false);
+      setIsShowFilterCategory(!isShowFilterCategory);
     }
-  }
+  };
 
   return (
     <div className="search">
@@ -120,40 +116,84 @@ export default function Search() {
               <div className="header__flex">
                 <div className="header__flex___select">
                   <div className={"wpSelect"}>
-                    <span onClick={() => onShowFilter('area')}>Khu vực</span>
-                    <ul className={isShowFliterArea ? "areaList isActiveMrrTopAdm" : "areaList"}>
+                    <span onClick={() => onShowFilter("area")}>Khu vực</span>
+                    <ul
+                      className={
+                        isShowFilterArea
+                          ? "areaList isActiveMrrTopAdm"
+                          : "areaList"
+                      }
+                    >
                       <li className="areaList__item">
                         <div className="w">
-                          <input onChange={onChangeFilter} type="checkbox" name="area" value={"quan1"} id="" />
+                          <input
+                            onChange={onChangeFilter}
+                            type="checkbox"
+                            name="area"
+                            value={"quan1"}
+                            id=""
+                          />
                           <span>Quận 1</span>
                         </div>
                       </li>
                       <li className="areaList__item">
                         <div className="w">
-                          <input onChange={onChangeFilter} type="checkbox" name="area" value={"quan2"} id="" />
+                          <input
+                            onChange={onChangeFilter}
+                            type="checkbox"
+                            name="area"
+                            value={"quan2"}
+                            id=""
+                          />
                           <span>Quận 2</span>
                         </div>
                       </li>
                       <li className="areaList__item">
                         <div className="w">
-                          <input onChange={onChangeFilter} type="checkbox" name="area" value={"quan3"} id="" />
+                          <input
+                            onChange={onChangeFilter}
+                            type="checkbox"
+                            name="area"
+                            value={"quan3"}
+                            id=""
+                          />
                           <span>Quận 3</span>
                         </div>
                       </li>
                     </ul>
                   </div>
-                  <div className="wpSelect" >
-                    <span onClick={() => onShowFilter('category')}>Danh mục </span>
-                    <ul className={isShowFliterCategory ? "areaList isActiveMrrTopAdm" : "areaList"}>
+                  <div className="wpSelect">
+                    <span onClick={() => onShowFilter("category")}>
+                      Danh mục{" "}
+                    </span>
+                    <ul
+                      className={
+                        isShowFilterCategory
+                          ? "areaList isActiveMrrTopAdm"
+                          : "areaList"
+                      }
+                    >
                       <li className="areaList__item">
                         <div className="w">
-                          <input type="checkbox" onChange={onChangeFilter} name="category" value="CT29" id="" />
+                          <input
+                            type="checkbox"
+                            onChange={onChangeFilter}
+                            name="category"
+                            value="CT29"
+                            id=""
+                          />
                           <span>Lẩu </span>
                         </div>
                       </li>
                       <li className="areaList__item">
                         <div className="w">
-                          <input type="checkbox" onChange={onChangeFilter} name="category" value="CT30" id="" />
+                          <input
+                            type="checkbox"
+                            onChange={onChangeFilter}
+                            name="category"
+                            value="CT30"
+                            id=""
+                          />
                           <span>Cơm</span>
                         </div>
                       </li>
@@ -164,26 +204,28 @@ export default function Search() {
                 <div className="header__flex___vlSearch">
                   <span>14.999 Kết quả </span>
                   <div className="select">Đúng nhất</div>
-                  <div onClick={onFilterProduct} className="select">Lọc</div>
+                  <div onClick={onFilterProduct} className="select">
+                    Lọc
+                  </div>
                 </div>
               </div>
               <ul className="header__listSearch">
-
-                {
-                  keyWord && keyWord.map((item, index) => {
+                {keyWord &&
+                  keyWord.map((item, index) => {
                     return (
                       <li key={index} className="header__listSearch___item">
                         <span>
                           Từ khóa : <b>{item}</b>
                         </span>
-                        <div onClick={() => onRemoveKeywordSearch(item)} className="remove">
+                        <div
+                          onClick={() => onRemoveKeywordSearch(item)}
+                          className="remove"
+                        >
                           <i className="fa-solid fa-xmark fa-size" />
                         </div>
                       </li>
-
-                    )
-                  })
-                }
+                    );
+                  })}
               </ul>
             </div>
             <div className="bd">

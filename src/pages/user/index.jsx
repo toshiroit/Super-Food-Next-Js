@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import MenuSlider from "../../common/Components/User/MenuSlider/MenuSlider";
 import User from "../../common/Components/User/User";
-import useWindowSize from "../../common/modules/WindowSize/WindowSize";
+import useWindowSize from "../../common/lib/WindowSize/WindowSize";
 
 export default function UserIdx() {
   let router = useRouter();

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ApiLink } from "../../constants/ApiLink";
 import { RouterLinkConfig } from "../../constants/RouterLink";
-import { showDisplay, } from "../../redux/features/showDisplay/showDisplaySlice";
+import { showDisplay } from "../../redux/features/showDisplay/showDisplaySlice";
 import { showMenuMobileDisplay } from "../../redux/features/showDisplay/showMenuMobile";
 
 import Login from "../Login/Login";
-import MenuMoble from "../MenuMobile/MenuMobile";
+import MenuMobile from "../MenuMobile/MenuMobile";
 import Search from "./Search/Search";
 
 export default function Header() {
@@ -14,44 +15,56 @@ export default function Header() {
   const isDisplayLogin = useSelector((state) => state.showDisplaySlice.display);
 
   /** isDisplayShowMobile Show Menu Mobile (Redux) **/
-  const isDisplayMenuMobile = useSelector(state => state.showMenuMobile.display)
+  const isDisplayMenuMobile = useSelector(
+    (state) => state.showMenuMobile.display
+  );
 
-
-  const [user] = useState(null)
+  const [user] = useState(null);
   const dispatch = useDispatch();
 
   /*Get Scroll*/
-  const [hegihtScroll, setHeightScroll] = useState();
+  const [heightScroll, setHeightScroll] = useState();
   const handleScroll = () => {
     const position = window.pageYOffset;
     setHeightScroll(position);
   };
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [hegihtScroll])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [heightScroll]);
 
   /**OnClick Show Menu Mobile **/
   const onShowMenuMobile = () => {
-    dispatch(showMenuMobileDisplay())
-  }
+    dispatch(showMenuMobileDisplay());
+  };
 
   /**OnClick Show Form Login **/
   const isShowLogin = () => {
     dispatch(showDisplay());
   };
-
   return (
     <>
       {
-        <div className={isDisplayLogin ? "fixedLogin showFormOpacity" : "fixedLogin hideFormOpacity"}>
+        <div
+          className={
+            isDisplayLogin
+              ? "fixedLogin showFormOpacity"
+              : "fixedLogin hideFormOpacity"
+          }
+        >
           <Login />
         </div>
       }
-      {isDisplayMenuMobile ? <MenuMoble /> : ""}
-      <div className={hegihtScroll && hegihtScroll >= 172 ? 'navbar navBarWebFixed showFormOpacity' : 'navbar'}>
+      {isDisplayMenuMobile ? <MenuMobile /> : ""}
+      <div
+        className={
+          heightScroll && heightScroll >= 172
+            ? "navbar navBarWebFixed showFormOpacity"
+            : "navbar"
+        }
+      >
         <div className="navbar__top">
           <div className="container">
             <ul className="topbar">
@@ -183,8 +196,8 @@ export default function Header() {
                     </a>
                   </Link>
                   <div className="text user">
-                    {
-                      user ? <div className="owp-w1 login-active">
+                    {user ? (
+                      <div className="owp-w1 login-active">
                         <i className="fa-size fa-solid fa-user" />
                         <div className="inner">
                           <span className="name">Đâu Văn Nam </span>
@@ -223,15 +236,15 @@ export default function Header() {
                           </li>
                         </ul>
                       </div>
-                        : <div onClick={() => isShowLogin(true)} className="owp-w1">
-                          <i className="fa-size fa-solid fa-user" />
-                          <span>Tài khoản</span>
-                        </div>
-                    }
+                    ) : (
+                      <div onClick={() => isShowLogin(true)} className="owp-w1">
+                        <i className="fa-size fa-solid fa-user" />
+                        <span>Tài khoản</span>
+                      </div>
+                    )}
                     {/* 
                    
                       */}
-
                   </div>
                 </div>
               </div>

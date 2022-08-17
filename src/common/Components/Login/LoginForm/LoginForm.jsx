@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { telephoneCheck } from "../../../modules/isPhone";
+import { telephoneCheck } from "../../../lib/isPhone";
+
 import { hideDisplay } from "../../../redux/features/showDisplay/showDisplaySlice";
-import { loginUser } from "../../../redux/features/User/UserSlice";
+import { loginUser } from "../../../redux/features/User/userSlice";
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,18 +12,18 @@ export default function LoginForm() {
     isSendCode: false,
     isUser: true,
     mess: null,
-  })
+  });
   const dispatch = useDispatch();
 
   const isCheckPhoneUser = (phone) => {
-    let mess = ""
+    let mess = "";
     if (phone.length === 0) {
       mess = "Vui lòng nhập số điện thoại của bạn ";
       setIsLogin({
         ...isLogin,
         isPhone: false,
         mess,
-      })
+      });
       return false;
     } else if (phone.length > 12) {
       let mess = "Số điện thoại không được quá 12 chữ số  ";
@@ -30,7 +31,7 @@ export default function LoginForm() {
         ...isLogin,
         isPhone: false,
         mess,
-      })
+      });
       return false;
     } else if (!telephoneCheck(phone)) {
       mess = "Số điện thoại không đúng định dạng ";
@@ -38,7 +39,7 @@ export default function LoginForm() {
         ...isLogin,
         isPhone: false,
         mess,
-      })
+      });
       return false;
     } else if (phone === "0949178082") {
       mess = "Số điện thoại đã được đăng kí ";
@@ -47,26 +48,23 @@ export default function LoginForm() {
         ...isLogin,
         isPhone: false,
         mess,
-      })
-      return false
+      });
+      return false;
     } else {
       setIsLogin({
         ...isLogin,
         isPhone: true,
         mess: null,
         isSendCode: true,
-      })
+      });
       return true;
     }
-
-  }
-
+  };
 
   const onRegPhone = (e) => {
     e.preventDefault();
     if (isCheckPhoneUser(e.target.phone.value)) {
-
-      dispatch(loginUser({ phone: e.target.phone.value }))
+      dispatch(loginUser({ phone: e.target.phone.value }));
     }
   };
 
@@ -74,7 +72,6 @@ export default function LoginForm() {
     dispatch(hideDisplay());
   };
   return (
-
     <div className="fixedLogin__inner">
       <form onSubmit={onRegPhone} action="">
         <div onClick={hideFromLogin} className="close">
@@ -164,6 +161,5 @@ export default function LoginForm() {
         </div>
       </form>
     </div>
-
   );
 }

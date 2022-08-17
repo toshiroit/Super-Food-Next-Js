@@ -1,17 +1,21 @@
 export const RouterLinkConfig = {
-  //*Trang chủ của web
+  //* Index Web
   //*
   index: "/",
 
-  //*Xem thông tin sản phẩm
+  //* Show Product Detail
   //*
   productDetailL: (nameProduct) => {
     return `/product/${nameProduct}`;
   },
 
-  //**Giỏ hàng  */
+  /** Search Product User */
+  search: (value) => {
+    return `/search/${value}`;
+  },
+  //** Cart */
   cart: "/cart",
-  //*Xem thông tin của Shop bán hàng
+  //* Detail Shop
   //*
   shopIndex: (nameShop) => {
     return `/shop/${nameShop}?tow=shop`;
@@ -25,4 +29,61 @@ export const RouterLinkConfig = {
   shopInfo: (nameShop) => {
     return `/shop/${nameShop}?tow=info`;
   },
+
+  /* User */
+
+  userInfo: () => {
+    return "/user/info";
+  },
+
+  userShop: () => {
+    return "/user/shop";
+  },
+
+  userPrice: () => {
+    return "/user/price";
+  },
+
+  userOrder: () => {
+    return "/user/order";
+  },
+  userOrderDetail: (value) => {
+    return `/user/order/detai/${value}`;
+  },
+
+  userPay: () => {
+    return "/user/pay";
+  },
+
+  userPayDetail: (value) => {
+    return `/user/pay/detail/${value}`;
+  },
+
+  userNotify: () => {
+    return "/user/notify";
+  },
+
+  userPrice: () => {
+    return "/user/price";
+  },
+  userNotifyDetail: (value) => {
+    return `/user/notify/detail/${value}`;
+  },
+
+  userAddress: () => {
+    return "/user/address";
+  },
+
+  userAddressDetail: (value) => {
+    return `/user/address/detail/${value}`;
+  },
+
+  userSecurity: () => {
+    return `/user/security`;
+  },
+  userSecuritySetting: () => {
+    return `/user/security/setting`;
+  },
+
+  /** URL API */
 };

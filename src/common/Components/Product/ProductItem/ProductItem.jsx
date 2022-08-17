@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RouterLinkConfig } from "../../../constants/RouterLink";
-import { Slug } from "../../../modules/Slug/slug";
+import { Slug } from "../../../lib/Slug/slug";
+
 export default function ProductItem({
   codeProduct,
   sale,

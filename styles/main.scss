@@ -109,7 +109,7 @@ html {
           //justify-content: space-between;
           align-items: center;
           &__left {
-            width:79%;
+            width: 79%;
             display: flex;
 
             align-items: center;
@@ -299,8 +299,8 @@ html {
             }
           }
           &__right {
-            margin-left:20px;
-            width:calc(21% - 20px);
+            margin-left: 20px;
+            width: calc(21% - 20px);
             &___userMobile {
               color: $sp-color-text-primary;
               font-size: 2rem;
@@ -383,7 +383,7 @@ html {
                 p {
                   color: $sp-color-text-white;
                   font-size: 0.9rem;
-                  line-height:10px;
+                  line-height: 10px;
                   font-weight: 500;
                 }
                 .quality {
@@ -411,10 +411,10 @@ html {
                 &:last-child {
                   margin-right: 0;
                 }
-                .owp-w1{
-                  span{
-                    line-height:10px;
-                    font-size:0.9rem;
+                .owp-w1 {
+                  span {
+                    line-height: 10px;
+                    font-size: 0.9rem;
                   }
                 }
               }
@@ -434,21 +434,21 @@ html {
       }
     }
     .bdError {
-    text-align: center;
-    h2 {
+      text-align: center;
+      h2 {
         margin: 40px 0;
         font-size: 2.5rem;
-    }
-    img {
+      }
+      img {
         width: 600px;
         max-width: 80%;
         padding: 10px;
-    }
-    h3 {
+      }
+      h3 {
         font-size: 1.2rem;
         margin: 40px 0 20px;
-    }
-    .main-btn {
+      }
+      .main-btn {
         padding: 15px;
         background-color: $sp-color-text-blue-1;
         color: #fff;
@@ -457,8 +457,8 @@ html {
         letter-spacing: 1px;
         border-radius: 6px;
         cursor: pointer;
+      }
     }
-}
     .bodyIdx {
       .category {
         border-top: 1px solid #ddd;
@@ -909,8 +909,7 @@ html {
                 position: absolute;
                 top: 25%;
                 z-index: 9999;
-                font-family: "Source Sans Pro", "Helvetica Neue", Helvetica,
-                  Arial, sans-serif;
+                font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
                 line-height: 24px;
                 font-style: normal;
                 font-weight: 700;
@@ -1259,8 +1258,7 @@ html {
                     left: -6px;
                     border-radius: 50%;
                     background-color: rgb(245, 245, 245);
-                    border-color: transparent transparent rgb(255, 66, 78)
-                      rgb(255, 66, 78);
+                    border-color: transparent transparent rgb(255, 66, 78) rgb(255, 66, 78);
                     border-style: solid;
                     border-width: 1px;
                     top: calc(50% - 6.5px);
@@ -1275,8 +1273,7 @@ html {
                     right: -6px;
                     border-radius: 50%;
                     background-color: rgb(245, 245, 245);
-                    border-color: transparent transparent rgb(255, 66, 78)
-                      rgb(255, 66, 78);
+                    border-color: transparent transparent rgb(255, 66, 78) rgb(255, 66, 78);
                     border-style: solid;
                     border-width: 1px;
                     top: calc(50% - 6.5px);
@@ -1626,8 +1623,8 @@ html {
                   border: 0;
                   padding-bottom: 0;
                 }
-                .comment{
-                  margin-top:24px;
+                .comment {
+                  margin-top: 24px;
                 }
                 .left {
                   padding: 12px;
@@ -1718,7 +1715,7 @@ html {
                         font-weight: 500;
                       }
                       .star {
-                        margin-top:2px;
+                        margin-top: 2px;
                         .not-active {
                           color: #dddd !important;
                         }
@@ -1739,15 +1736,14 @@ html {
                       cursor: pointer;
                       &:hover .fa-size {
                         color: $sp-color-text-primary;
-
                       }
                       .fa-size {
-                        font-size:0.9rem;
+                        font-size: 0.9rem;
                         color: rgb(187, 184, 184);
                       }
                       b {
                         color: rgb(155, 154, 154);
-                        font-size:0.9rem;
+                        font-size: 0.9rem;
                         font-weight: 500;
                       }
                     }
@@ -1767,11 +1763,11 @@ html {
                         width: 100%;
                       }
                     }
-                    &:-webkit-scrollbar{
-                      width:2px;
+                    &:-webkit-scrollbar {
+                      width: 2px;
                     }
-                    &:-webkit-scrollbar-thumb{
-                      background-color:$sp-color-text-primary;
+                    &:-webkit-scrollbar-thumb {
+                      background-color: $sp-color-text-primary;
                     }
                   }
                   .sort {
@@ -1937,7 +1933,6 @@ html {
                       img {
                         border-radius: 50%;
                         width: 100%;
-
                       }
                     }
                     &__content {
@@ -1949,11 +1944,11 @@ html {
                       .title {
                         @include fontText(0.95rem);
                         .fa-size {
-                          margin-left:3px;
+                          margin-left: 3px;
                           color: $sp-background-color-success;
                         }
                         b {
-                          margin-left:2px;
+                          margin-left: 2px;
                           color: #787878;
                           font-size: 0.8rem;
                           font-weight: 500;
@@ -2080,14 +2075,14 @@ html {
                 display: inline-block;
                 padding: 4px 8px;
                 border-radius: 4px;
-                cursor:pointer;
-                margin-right:30px;
-                margin-bottom:15px;
+                cursor: pointer;
+                margin-right: 30px;
+                margin-bottom: 15px;
                 background-color: #e5e5e5;
                 border: 1px solid #ddd;
                 position: relative;
-                &:last-child{
-                  margin-right:0;
+                &:last-child {
+                  margin-right: 0;
                 }
                 span {
                   font-size: 0.85rem;
@@ -2166,7 +2161,7 @@ html {
                   }
                   .areaList {
                     position: absolute;
-                    visibility:hidden;
+                    visibility: hidden;
                     display: flex;
                     z-index: 9999;
                     background-color: $sp-background-color-white;
@@ -4099,18 +4094,19 @@ html {
                       border: 1px solid #d5d5d5;
                       outline: none;
                       width: 100%;
-                      max-width: 250px;
+                      max-width: 235px;
                       border-radius: 3px;
                       padding: 9px 10px;
                     }
                     button[type="submit"],
                     [type="button"] {
-                      padding: 6px;
+                      border-radius: 4px;
+                      padding: 10px;
                       background: none;
                       border: 1px solid $sp-color-text-primary;
-                      border-radius: 2px;
-
                       cursor: pointer;
+                      margin-left: 6px;
+                      font-weight: 500;
                       color: $sp-color-text-primary;
                     }
                     .checkSex {
@@ -9792,8 +9788,7 @@ html {
                       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
                       border-radius: 3px;
                       z-index: 5;
-                      -webkit-transition: background-color 0.2s,
-                        border-color 0.2s;
+                      -webkit-transition: background-color 0.2s, border-color 0.2s;
                       &:after {
                         content: "";
                         position: absolute;
