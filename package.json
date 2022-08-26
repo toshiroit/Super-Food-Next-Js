@@ -2,6 +2,7 @@
   "name": "super-food",
   "version": "1.0.0",
   "private": true,
+  "repository":"git@git",
   "description": "Toshiro's Web-App Super Food",
   "main": "index.js",
   "engines": {
@@ -18,7 +19,7 @@
     "test": "next test"
   },
   "keywords": [],
-  "author": "Toshiro Hirigara <toshiroit@gmail.com>",
+  "author": "Toshiro Hirigara <Toshiroit@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@next/swc-linux-x64-gnu": "^11.1.2",

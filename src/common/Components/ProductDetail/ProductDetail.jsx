@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import axios from "axios";
 import Link from "next/link";
 import { RouterLinkConfig } from "../../constants/RouterLink";
 import ProductDetailContent from "./ProductDetailContent/ProductDetailContent";
 import ProductDetailComment from "./ProductDetailComment/ProductDetailComment";
-export default function ProductDetail({ data }) {
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductByName } from "../../redux/features/product/productThunks";
+import { selectProductDetail } from "../../redux/features/product/productSelects";
+export default function ProductDetail() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const dataProductDetail = useSelector(selectProductDetail);
+  console.log(dataProductDetail)
+  useEffect(() => {
+    dispatch(getProductByName(router.query.name,null))
+  }, [router.query.name])
   return (
     <>
       <>
@@ -29,7 +38,7 @@ export default function ProductDetail({ data }) {
                     <ul className="photo__side">
                       <li className="photo__side___item">
                         <picture>
-                          <img src={""} alt="" />
+                          <img src={"http://caresspet.com/wp-content/uploads/2018/10/s16-1024x768.jpg"} alt="" />
                         </picture>
                       </li>
                     </ul>

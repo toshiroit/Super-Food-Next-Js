@@ -1,12 +1,11 @@
 import { fetchUser, fetchUserByEmail, fetchUserByPhone, updateUserByPhone } from "./userThunks";
 
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+const { createSlice } = require("@reduxjs/toolkit");
 
 let isPhone = true;
 let isSend = true;
 let isCheckCode = true;
 
-export const regUserThunk = createAsyncThunk("user/register", {});
 const UserSlice = createSlice({
   name: "isLoginUser",
   initialState: {

@@ -1,7 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit");
 const { fetchProducts, fetchProductsByFilterParams } = require("./productsThunks");
 
-const productsSlice = createSlice({
+const ProductsSlice = createSlice({
   name: "productsSlice",
   initialState: {
     products: [],
@@ -58,3 +58,5 @@ const productsSlice = createSlice({
     });
   },
 });
+
+export default ProductsSlice.reducers;

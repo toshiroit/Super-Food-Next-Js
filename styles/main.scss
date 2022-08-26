@@ -2388,16 +2388,24 @@ html {
                         height: 1.2em;
                       }
                       .wo {
-                        margin-left: 5px;
+                        margin-top:2px;
+                        margin-left: 10px;
                         font-size: 1rem;
                         font-family: "Roboto", sans-serif;
                         font-weight: 400;
+                        i{
+                          color:$sp-color-text-primary;
+                        }
+                        span{
+                          margin-left:3.5px;
+                          font-size:0.95rem;
+                        }
                       }
                     }
                     .comboGiftShip {
                       margin-top: 15px;
                       background-color: #fff3ed;
-                      padding: 10px;
+                      padding: 5px;
                       display: flex;
                       align-items: center;
                       span {
@@ -2408,7 +2416,7 @@ html {
                       }
                       p {
                         margin-left: 5px;
-                        font-size: 0.9rem;
+                        font-size: 0.8rem;
                       }
                     }
                   }
@@ -2538,7 +2546,7 @@ html {
                             border: 1px solid #9d9d9d;
                             padding: 3.5px;
                             border-radius: 2px;
-                            color: #dddd;
+                            color: rgb(74 74 74 / 87%);
                           }
                           input[type="number"] {
                             outline: none;
@@ -2561,7 +2569,8 @@ html {
                         span {
                           font-family: "Roboto", sans-serif;
                           font-size: 0.9rem;
-                          color: $sp-color-text-danger;
+                          font-weight:500;
+                          color: $sp-color-text-primary;
                         }
                       }
                       &__remove {
@@ -2569,9 +2578,10 @@ html {
                         .fa-size {
                           font-size: 1.3rem;
                           transition: all 0.3s;
+                          color: $sp-color-text-danger;
                           &:hover {
                             cursor: pointer;
-                            color: $sp-color-text-danger;
+
                             transform: rotate(180deg);
                           }
                         }
@@ -3108,8 +3118,7 @@ html {
                 background-color: $sp-background-color-white;
                 margin-top: 15px;
                 &__title {
-                  font-size: 1.35rem;
-                  font-family: "Roboto", "Helvetica Neue", sans-serif;
+                  font-size: 1.2rem;
                   font-weight: 400;
                   padding: 10px;
                 }
@@ -3128,7 +3137,7 @@ html {
                       }
                       span {
                         margin-left: 7px;
-                        font-weight: 700;
+                        font-weight: 500;
                         color: #38383d;
                         line-height: 20px;
                         font-size: 0.85rem;
@@ -3293,7 +3302,7 @@ html {
                 }
                 &__list {
                   margin-top: 10px;
-                  height: 138px;
+                  max-height: 138px;
                   overflow-y: scroll;
                   &::-webkit-scrollbar-thumb {
                     background: $sp-background-color-primary-2;
@@ -3356,10 +3365,7 @@ html {
                   justify-content: space-between;
                   align-items: flex-start;
                   padding-bottom: 15px;
-                  &:hover ~ .infoProduct {
-                    display: block;
-                    animation: animationScrollShowCheckOut ease-in 0.3s;
-                  }
+                  
                   span.inner {
                     cursor: pointer;
                   }

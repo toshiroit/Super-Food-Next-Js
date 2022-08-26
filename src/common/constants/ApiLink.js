@@ -5,6 +5,7 @@ export const GET_PRODUCT_BY_PAGE = (page) => `products?page=${page}`;
 export const GET_PRODUCT_BY_CURRENT_PAGE = (page) => `products?page=${page};`;
 export const GET_ALL_PRODUCT = "products";
 export const SEARCH_PRODUCT = "products/search";
+export const GET_PRODUCT_BY_NAME = (name, id) => `product/productDetail?name=${name}&id=${id}`
 
 //user
 export const GET_USER_BY_PAGE = (page) => `users?page=${page}`;

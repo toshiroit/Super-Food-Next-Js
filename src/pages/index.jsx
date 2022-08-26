@@ -1,66 +1,12 @@
 import Head from "next/head";
-import Banner from "../common/Components/Banner/Banner";
-import ProductTopMenu from "../common/Components/Product/ProductTopMenu";
-import ProductIdx from "../common/Components/Product/ProductIdx";
-import Trademark from "../common/Components/Trademark/Trademark";
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-export default function Home() {
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const data = await axios
-        .get("https://62f0bc86e2bca93cd23bd902.mockapi.io/api/product/product")
-        .then((res) => {
-          return res.data;
-        })
-        .catch((err) => {
-          return err.message;
-        });
-      if (data) {
-        setProduct(data);
-      }
-    };
-    fetchProduct();
-  }, []);
+import Home from "../common/Components/Home/Home";
+export default function index() {
   return (
     <>
       <Head>
-        {" "}
-        <title> Trang chủ </title>{" "}
+        <title> Trang chủ </title>
       </Head>
-      <div className="bodyIdx">
-        <div className="container">
-          <Banner />
-          <div className="main">
-            <div className="main__wp1">
-              <ProductTopMenu />
-            </div>
-          </div>
-          <div className="main">
-            <div className="main__wp1">
-              <ProductIdx products={product} />
-            </div>
-          </div>
-          <div className="main">
-            <div className="main__wp1">
-              <ProductIdx />
-            </div>
-          </div>
-          <div className="main">
-            <div className="main__wp1">
-              <ProductIdx />
-            </div>
-          </div>
-          <div className="main">
-            <div className="main__wp1">
-              <ProductIdx />
-            </div>
-          </div>
-          <Trademark />
-        </div>
-      </div>
+      <Home />
     </>
   );
 }

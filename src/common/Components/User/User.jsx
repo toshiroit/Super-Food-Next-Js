@@ -1,8 +1,5 @@
 import { useEffect } from "react";
 import useWindowSize from "../../lib/WindowSize/WindowSize";
-
-import MenuSlider from "./MenuSlider/MenuSlider";
-
 export default function User({ isActive, children }) {
   const sizeWindow = useWindowSize().width;
   useEffect(() => {
@@ -21,7 +18,7 @@ export default function User({ isActive, children }) {
   return (
     <div className="user">
       <div className="container">
-        <div className="user__content breadcrum">
+        <div className="user__content breadcrum " >
           <div className="user__content___breadcrumb breadcrumb__content">
             <ul className="main">
               <li className="main__item">SuperFood</li>

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { login, register } from "../../../redux/features/auth/authThunk";
 import { hideDisplay } from "../../../redux/features/showDisplay/showDisplaySlice";
 import { confirmRegUser } from "../../../redux/features/User/userSlice";
 
@@ -139,7 +140,7 @@ export default function LoginConfirmInfo() {
   const onConfirmRegister = (e) => {
     e.preventDefault();
     if (!validate(userConfirm).isError) {
-      dispatch(confirmRegUser({ valueUser: userConfirm }));
+      dispatch(register({ userData: userConfirm }));
       dispatch(hideDisplay());
       router.push("/");
     }

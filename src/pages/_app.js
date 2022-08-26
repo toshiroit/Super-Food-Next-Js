@@ -25,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
         </div>
       </div>
     </Provider>
+
   );
 };
 export default wrapper.withRedux(MyApp);
