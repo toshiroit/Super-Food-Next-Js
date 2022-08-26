@@ -58,13 +58,7 @@ export default function Header() {
         </div>
       }
       {isDisplayMenuMobile ? <MenuMobile /> : ""}
-      <div
-        className={
-          heightScroll && heightScroll >= 172
-            ? "navbar navBarWebFixed showFormOpacity"
-            : "navbar"
-        }
-      >
+      <div className="navbar">
         <div className="navbar__top">
           <div className="container">
             <ul className="topbar">

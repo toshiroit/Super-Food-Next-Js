@@ -1,3 +1,5 @@
+@import "./function";
+
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -988,4 +990,88 @@ a {
     .navbar__top{
       display:none;
     }
+}
+.notification {
+   position: fixed;
+   right: 30px;
+   bottom: 150px;
+   z-index:9999;
+   max-width:381px;
+   &__inner{
+     .owp{
+       margin-bottom:15px;
+       display:flex;
+       align-items:center;
+       padding:25px;
+       border-radius:4px;
+       position:relative;
+       animation: SliderLeftNotification 0.4s;
+       animation-fill-mode: forwards;
+       overflow:hidden;
+        position:relative;
+         &:after{
+          content: "";
+          left: 0;
+          z-index:999;
+          width: 6px;
+          height: 100%;
+          top: 0;
+          border-radius: 4px;
+          position: absolute;
+        }
+        .wdLoading-success{
+          background-color:rgba(14,137,23,0.78);
+        }
+        .wdLoading-danger{
+          background-color:color(danger-opt-1);
+        }
+       .wdLoading{
+         border-radius:5px;
+         left:0;
+         z-index:1;
+         bottom:0;
+         height:4px;
+         position:absolute;
+       }
+       .icon{
+         padding-left:5px;
+         font-size:1.5rem;
+         &-success{
+           color: #02742c;
+         }
+       }
+       .text{
+         margin-left:5px;
+       }
+       .btn{
+         margin-left:5px;
+         &-close{
+           color:#ca0b00;
+         }
+         &-active{
+            margin-top: 2px;
+            font-size: 1.3rem;
+            cursor: pointer;
+         }
+       }
+     }
+     .exit{
+        animation:SliderRightNotification 0.4s;
+        animation-fill-mode:forwards;
+     }
+     .success{
+       background-color:rgba(122, 239, 165, 1);
+     
+        &:after{
+          background-color: #39a560;
+        }
+      }
+    .danger{
+       background-color:color(danger-opt-02);    
+        &:after{
+          background-color:color(danger-opt-1);
+        }
+      }
+   }
+
 }

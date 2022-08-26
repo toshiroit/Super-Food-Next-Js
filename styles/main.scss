@@ -1056,8 +1056,8 @@ html {
                   }
                 }
                 &___item {
-                  max-width: 94.8px;
-                  height: 66px;
+                  max-width:100%;
+                  //height: 66px;
                   display: inline-block;
                   border-radius: 0px;
                   margin-right: 2px;
@@ -1600,7 +1600,7 @@ html {
         }
         &___comment {
           margin-top: 15px;
-          background-color: #f9f9f9;
+          //background-color: #f9f9f9;
           padding: 10px;
           .title {
             h4 {

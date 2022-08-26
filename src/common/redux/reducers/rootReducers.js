@@ -1,6 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import authSlice from "../features/auth/authSlice";
 import cartSlice from "../features/cart/cartSlice";
+import notificationSlice from "../features/notification/notificationSlice";
 import ProductSlice from "../features/product/productSlice";
 import SearchSlice from "../features/Search/SearchSlice";
 import showDisplaySlice from "../features/showDisplay/showDisplaySlice";
@@ -16,5 +17,6 @@ export default combineReducers({
   showMenuMobile,
   SearchSlice,
   ProductSlice,
-  cartSlice
+  cartSlice,
+  notificationSlice
 });
