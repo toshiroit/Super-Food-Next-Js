@@ -1,12 +1,15 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { LocalStorage } from "../../lib/Localstorage/Localstorage";
 import { selectCartProductGroup } from "../../redux/features/cart/cartSelects";
 import BreadCrumb from "../Breadcrumb/BreadCrumb";
 import CartItem from "./CartItem/CartItem";
 import CartPay from "./CartPay/CartPay";
 
 export default function Cart() {
-  const dataCartRx = useSelector(selectCartProductGroup)
+  const dataCartRx = useSelector(selectCartProductGroup);
+  const [dataCartLocal, setDataCartLocal] = useState();
   let dataCartShop = [
     {
       codeShop: "SHOP12471761274",
@@ -18,7 +21,8 @@ export default function Cart() {
           codeShop: "SH14751WLAW",
           nameShop: "Cửa hàng lẩu trùng khánh ",
           info: "",
-          image: "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
+          image:
+            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
           nameProduct: "Lẩu trùng khánh cay nhẹ ",
           price: 146000,
           discount: 23,
@@ -29,13 +33,14 @@ export default function Cart() {
           codeShop: "SH14751WLAW",
           nameShop: "Cửa hàng lẩu trùng khánh ",
           info: "",
-          image: "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
+          image:
+            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
           nameProduct: "Lẩu trùng khánh cay nhẹ ",
           price: 146000,
           discount: 23,
           quality: 23,
         },
-      ]
+      ],
     },
     {
       codeShop: "SHOP12128611741",
@@ -47,7 +52,8 @@ export default function Cart() {
           codeShop: "SH14751WLAW",
           nameShop: "Cửa hàng lẩu trùng khánh ",
           info: "",
-          image: "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
+          image:
+            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
           nameProduct: "Lẩu trùng khánh cay nhẹ ",
           price: 146000,
           discount: 23,
@@ -58,28 +64,34 @@ export default function Cart() {
           codeShop: "SH14751WLAW",
           nameShop: "Cửa hàng lẩu trùng khánh ",
           info: "",
-          image: "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
+          image:
+            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
           nameProduct: "Lẩu trùng khánh cay nhẹ ",
           price: 146000,
           discount: 23,
           quality: 23,
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ];
+  useEffect(() => {
+    const data = JSON.parse(LocalStorage("cart", null, "GET"));
+    // LocalStorage("cart", dataCartShop, "SET");
+    setDataCartLocal(data);
+  }, []);
   const onOrder = (e) => {
-    e.preventDefault()
-    console.log(dataCartRx)
-  }
+    e.preventDefault();
+  };
   const totalProductCart = (dataCartShop) => {
-    let sizeProduct = []
-    dataCartShop.map(item => {
-      item.productCart.map(productCart => {
-        sizeProduct.push(productCart)
-      })
-    })
-    return sizeProduct.length
-  }
+    let sizeProduct = [];
+    dataCartShop &&
+      dataCartShop.map((item) => {
+        item.productCart.map((productCart) => {
+          sizeProduct.push(productCart);
+        });
+      });
+    return sizeProduct.length;
+  };
   return (
     <div className="cart">
       <div className="container">
@@ -99,7 +111,9 @@ export default function Cart() {
                       <li className="header__main___item">
                         <input type="checkbox" className="" name="" id="" />
                         <label className="check-box" />
-                        <span>Tất cả ( {totalProductCart(dataCartShop)} sản phẩm ) </span>
+                        <span>
+                          Tất cả ( {totalProductCart(dataCartLocal)} sản phẩm ){" "}
+                        </span>
                       </li>
                       <li className="header__main___item price">
                         <span>Đơn giá </span>
@@ -118,7 +132,7 @@ export default function Cart() {
                     </ul>
                   </div>
                   <ul className="main">
-                    <CartItem dataCartShop={dataCartShop} />
+                    <CartItem dataCartShop={dataCartLocal} />
                   </ul>
                 </div>
                 <div className="right">

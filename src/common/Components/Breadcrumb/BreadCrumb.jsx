@@ -1,9 +1,20 @@
-export default function BreadCrumb() {
+import Link from "next/link"
+
+export default function BreadCrumb({ data }) {
+
   return (
     <ul className="main">
-      <li className="main__item">Supership</li>
-      <li className="main__item">Người dùng</li>
-      <li className="main__item">Giỏ hàng</li>
+      {
+        data && data.map(item => {
+          return (
+            <Link href={item.link}>
+              <a className="main__item">
+                <li className="main__item">{item.name === 'index' ? 'Trang chủ ' : item.name}</li>
+              </a>
+            </Link>
+          )
+        })
+      }
     </ul>
   )
 }

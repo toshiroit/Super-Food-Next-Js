@@ -48,7 +48,7 @@ export const RouterLinkConfig = {
     return "/user/order";
   },
   userOrderDetail: (value) => {
-    return `/user/order/detai/${value}`;
+    return `/user/order/detail/${value}`;
   },
 
   userPay: () => {

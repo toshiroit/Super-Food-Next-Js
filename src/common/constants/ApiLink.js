@@ -5,13 +5,16 @@ export const GET_PRODUCT_BY_PAGE = (page) => `products?page=${page}`;
 export const GET_PRODUCT_BY_CURRENT_PAGE = (page) => `products?page=${page};`;
 export const GET_ALL_PRODUCT = "products";
 export const SEARCH_PRODUCT = "products/search";
-export const GET_PRODUCT_BY_NAME = (name, id) => `product/productDetail?name=${name}&id=${id}`
+export const GET_PRODUCT_BY_NAME = (name, id) =>
+  `product/productDetail?name=${name}&id=${id}`;
 
 //user
 export const GET_USER_BY_PAGE = (page) => `users?page=${page}`;
 export const GET_USER_BY_PHONE = (phone) => `user/?phone=${phone}`;
 export const GET_USER_BY_EMAIL = (email) => `user/?email=${email}`;
 export const UPDATE_USER_BY_PHONE = `user/update`;
+export const UPDATE_USER_EMAIL_BY_CODE = `user/updateEmail`;
+export const UPDATE_USER_PASSCV1_BY_CODE = "user/updatePassCv1";
 
 //auth
 export const AUTH_REFRESH_TOKEN = "auth/refresh-token";

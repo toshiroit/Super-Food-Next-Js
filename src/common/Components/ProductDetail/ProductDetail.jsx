@@ -11,6 +11,7 @@ import { addNotification } from "../../redux/features/notification/notificationS
 import { selectNotifications } from "../../redux/features/notification/notificationSelects";
 import { v4 } from "uuid";
 import NotificationRoot from "../Notification/NotificationRoot";
+import BreadCrumb from "../Breadcrumb/BreadCrumb";
 
 export default function ProductDetail() {
   const router = useRouter();
@@ -19,6 +20,11 @@ export default function ProductDetail() {
   const dataNotification = useSelector(selectNotifications)
   const [maxQuality, setMaxQuality] = useState();
   const [quality, setQuality] = useState(1)
+  const [dataBreadcrumb] = useState([
+    { name: 'index', link: '/' },
+    { name: 'Sản phẩm ', link: '/' },
+    { name: `${router.query.name}`, link: `/product/${router.query.name}` },
+  ])
   useEffect(() => {
     dispatch(getProductByName(router.query.name, null))
   }, [router.query.name])
@@ -41,7 +47,7 @@ export default function ProductDetail() {
     const value = {
       id: v4(),
       type: "success",
-      icon:`<i class="fa-solid fa-bag-shopping icon-success"></i>`,
+      icon: `<i class="fa-solid fa-bag-shopping icon-success"></i>`,
       message: "Thêm sản phẩm vào giỏ hàng thành công "
     }
     dispatch(addNotification(value))
@@ -53,11 +59,7 @@ export default function ProductDetail() {
         <div className="container">
           <div className="detail__content breadcrumb">
             <div className="detail__content___breadcrumb breadcrumb__content">
-              <ul className="main">
-                <li className="main__item">Supership</li>
-                <li className="main__item">Sản phẩm</li>
-                <li className="main__item">Set cơm việt</li>
-              </ul>
+              <BreadCrumb data={dataBreadcrumb} />
             </div>
             <div className="detail__content___product">
               <div className="common">
@@ -1008,3 +1010,4 @@ export default function ProductDetail() {
     </>
   );
 }
+

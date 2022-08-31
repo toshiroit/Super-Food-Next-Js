@@ -1,6 +1,6 @@
 import Product from "./Product";
 
-export default function ProductIdx({ title, image, products }) {
+export default function ProductIdx({ title, image, products, size }) {
   return (
     <>
       <div className="main__wp1___title">
@@ -15,7 +15,7 @@ export default function ProductIdx({ title, image, products }) {
         </div>
       </div>
       {products ? (
-        <Product products={products} />
+        <Product products={products} size={size} />
       ) : (
         <div className="" style={{ width: "100%", textAlign: "center" }}>
           <div className="loadingio-spinner-rolling-o0si3la4pz">

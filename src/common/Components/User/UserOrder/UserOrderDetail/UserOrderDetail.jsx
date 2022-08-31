@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function UserOderDetail() {
+export default function UserOrderDetail() {
   return (
     <div className="content">
       <div className="title">

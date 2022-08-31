@@ -1,6 +1,12 @@
+import { useState } from "react";
 import GiftItem from "./GiftItem/GiftItem";
 
 export default function CartPay() {
+  const [codeGift, setCodeGift] = useState();
+  const onChangeCodeGift = (e) => {
+    setCodeGift(e.target.value);
+  };
+  const onCheckCodeGift = () => {};
   return (
     <>
       <div className="header">
@@ -24,9 +30,7 @@ export default function CartPay() {
           </div>
         </div>
         <div className="address">
-          <p>
-            Đăk lakw, Phường Tân Lợi, Thành phố Buôn Ma Thuột, Đắk Lắk
-          </p>
+          <p>Đăk lakw, Phường Tân Lợi, Thành phố Buôn Ma Thuột, Đắk Lắk</p>
         </div>
       </div>
       <div className="main">
@@ -45,13 +49,22 @@ export default function CartPay() {
           <GiftItem />
         </ul>
         <div className="main__input">
-          <input
-            placeholder="Mã giảm giá của bạn "
-            type="text"
-            name=""
-            id=""
-          />
-          <button>Áp dụng</button>
+          <div className="main__input___owp">
+            <input
+              placeholder="Mã giảm giá của bạn "
+              type="text"
+              name="codeGift"
+              onChange={onChangeCodeGift}
+              id=""
+            />
+            <button onClick={onCheckCodeGift}>Áp dụng</button>
+          </div>
+          <p
+            style={{ fontSize: "0.9rem", color: "#e7000e", marginTop: "5px" }}
+            className="error"
+          >
+            Mã giảm giá không chính xác{" "}
+          </p>
         </div>
       </div>
       <div className="footer">
@@ -78,7 +91,6 @@ export default function CartPay() {
           </button>
         </div>
       </div>
-
     </>
-  )
+  );
 }

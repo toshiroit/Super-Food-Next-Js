@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { removeNotification } from "../../redux/features/notification/notificationSlice"
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from 'react-html-parser';
 
 const Notification = (props) => {
   const [loading, setLoading] = useState(0)
@@ -47,17 +47,19 @@ const Notification = (props) => {
   }
 
   return (
-    <div onMouseEnter={handlePauseTimer} onMouseLeave={handleStarTimer} className={`owp ${props.type} ${isClose ? 'exit' : ''}`}>
-      <div className={`wdLoading wdLoading-${props.type}`} style={{ width: `${loading}%` }}>
-      </div>
-      <div className="icon">
-        {ReactHtmlParser(props.icon)}
-     </div>
-      <div className="text">
-        <span>{props.message}</span>
-      </div>
-      <div onClick={closeNotification} className="btn">
-        <i className="fa-solid fa-xmark btn-close btn-active" />
+    <div className="notification__inner" style={{ display: isClose ? 'none' : '' }}>
+      <div onMouseEnter={handlePauseTimer} onMouseLeave={handleStarTimer} className={`owp ${props.type} ${isClose ? 'exit' : ''}`}>
+        <div className={`wdLoading wdLoading-${props.type}`} style={{ width: `${loading}%` }}>
+        </div>
+        <div className="icon">
+          {ReactHtmlParser(props.icon)}
+        </div>
+        <div className="text">
+          <span>{props.message}</span>
+        </div>
+        <div onClick={closeNotification} className="btn">
+          <i className="fa-solid fa-xmark btn-close btn-active" />
+        </div>
       </div>
     </div>
   )

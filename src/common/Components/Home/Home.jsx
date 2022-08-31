@@ -12,14 +12,13 @@ export default function Home() {
       const data = await axios
         .get("https://62f0bc86e2bca93cd23bd902.mockapi.io/api/product/product")
         .then((res) => {
-          return res.data;
+          return setProduct(res.data);
         })
         .catch((err) => {
+          console.log(err)
           return err.message;
         });
-      if (data) {
-        setProduct(data);
-      }
+
     };
     fetchProduct();
   }, []);
@@ -34,12 +33,12 @@ export default function Home() {
         </div>
         <div className="main">
           <div className="main__wp1">
-            <ProductIdx products={product} />
+            <ProductIdx products={product} size={6} />
           </div>
         </div>
         <div className="main">
           <div className="main__wp1">
-            <ProductIdx />
+            <ProductIdx products={product} size={6} />
           </div>
         </div>
         <div className="main">
@@ -55,5 +54,5 @@ export default function Home() {
         <Trademark />
       </div>
     </div>
-  )
+  );
 }

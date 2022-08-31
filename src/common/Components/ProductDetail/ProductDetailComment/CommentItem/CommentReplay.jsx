@@ -4,7 +4,7 @@ export default function CommentReplay() {
       <div className="repComment__avatar">
         <picture>
           <img
-            src="https://loanthehongnhan.vn/hinh-anh-anime-doi/imager_29338.jpg"
+            src="https://phunugioi.com/wp-content/uploads/2020/10/anh-dai-dien-avt-anime-1.jpg"
             alt=""
           />
         </picture>

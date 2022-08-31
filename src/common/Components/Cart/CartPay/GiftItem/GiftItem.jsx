@@ -1,11 +1,13 @@
-export default function GiftItem({ image, title }) {
+export default function GiftItem({ image, title, code }) {
   return (
     <li className="main__list___item">
       <div className="image">
-        <img
-          src="https://cdn.tgdd.vn/2020/04/GameApp/image-180x180.png"
-          alt=""
-        />
+        <picture>
+          <img
+            src="https://cdn.tgdd.vn/2020/04/GameApp/image-180x180.png"
+            alt=""
+          />
+        </picture>
       </div>
       <i className="bd" />
       <div className="price">
@@ -15,5 +17,5 @@ export default function GiftItem({ image, title }) {
         <button type="submit">Chọn</button>
       </div>
     </li>
-  )
+  );
 }

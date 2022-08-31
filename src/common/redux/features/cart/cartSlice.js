@@ -1,18 +1,22 @@
+import { LocalStorage } from "../../../lib/Localstorage/Localstorage";
+
 const { createSlice } = require("@reduxjs/toolkit");
 
 const cartSlice = createSlice({
   name: "Cart",
   initialState: {
-    productsGroup: []
+    productsGroup: [],
   },
   reducers: {
     onChaneCartProduct: (state, action) => {
-      let productsCart = []
+      let productsCart = [];
       if (action.payload.products.length > 0) {
-        productsGroup = action.payload.products
+        productsCart = action.payload.products;
+        //state.productsGroup = [...state.productsGroup,productsCart]
+        return state;
       }
-    }
-  }
-})
-export const { onChaneCartProduct } = cartSlice.actions
-export default cartSlice.reducer
+    },
+  },
+});
+export const { onChaneCartProduct } = cartSlice.actions;
+export default cartSlice.reducer;

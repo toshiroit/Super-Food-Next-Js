@@ -1,7 +1,7 @@
 import Head from "next/head";
 import MenuSlider from "../../../../common/Components/User/MenuSlider/MenuSlider";
 import User from "../../../../common/Components/User/User";
-import UserOderDetail from "../../../../common/Components/User/UserOrder/UserOrderDetail/UserOderDetail";
+import UserOrderDetail from "../../../../common/Components/User/UserOrder/UserOrderDetail/UserOrderDetail";
 
 export default function OrderDetailIdx() {
   return (
@@ -11,7 +11,7 @@ export default function OrderDetailIdx() {
       </Head>
       <User>
         {<MenuSlider />}
-        {<UserOderDetail />}
+        {<UserOrderDetail />}
       </User>
     </>
   );

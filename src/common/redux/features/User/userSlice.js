@@ -1,4 +1,10 @@
-import { fetchUser, fetchUserByEmail, fetchUserByPhone, updateUserByPhone } from "./userThunks";
+import {
+  fetchUser,
+  fetchUserByEmail,
+  fetchUserByPhone,
+  updateUserByPhone,
+  updateUserEmailPhoneByCode,
+} from "./userThunks";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -154,8 +160,22 @@ const UserSlice = createSlice({
       state.pagesCount = action.payload.pagesCount;
       state.totalElements = action.payload.totalElements;
     });
+
+    /** Update User Email by Code */
+    builder.addCase(updateUserEmailPhoneByCode.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(updateUserEmailPhoneByCode.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    });
+    builder.addCase(updateUserEmailPhoneByCode.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+    });
   },
 });
 
-export const { setUser, loginUser, sendCode, confirmRegUser } = UserSlice.actions;
+export const { setUser, loginUser, sendCode, confirmRegUser } =
+  UserSlice.actions;
 export default UserSlice.reducer;

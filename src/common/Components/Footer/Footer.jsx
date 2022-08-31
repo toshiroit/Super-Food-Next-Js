@@ -1,4 +1,14 @@
+import Link from "next/link"
+import { useState } from "react"
+
 export default function Footer() {
+  const [email, setEmail] = useState()
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+  const onRegBellMail = () => {
+
+  }
   return (
     <footer>
       <div className="bannerFooter">
@@ -14,10 +24,11 @@ export default function Footer() {
                   <input
                     placeholder="Nhập Email để nhận thông báo mới nhất"
                     type="email"
-                    name=""
+                    name="email"
+                    onChange={onChangeEmail}
                     id=""
                   />
-                  <i className="fa-solid fa-paper-plane fa-size" />
+                  <i className="fa-solid fa-paper-plane fa-size" onClick={onRegBellMail} />
                 </div>
               </div>
               <div className="bell__right">
@@ -25,15 +36,27 @@ export default function Footer() {
                   <h4>Liên hệ với chúng tôi</h4>
                 </div>
                 <ul className="bell__right___main">
-                  <li className="bell__right___main____item">
-                    <img src="./images/youtube.png" alt="" />
-                  </li>
-                  <li className="bell__right___main____item">
-                    <img src="./images/facebook.png" alt="" />
-                  </li>
-                  <li className="bell__right___main____item">
-                    <img src="./images/twitter.webp" alt="" />
-                  </li>
+                  <Link href={'/'}>
+                    <a>
+                      <li className="bell__right___main____item">
+                        <img src="./images/youtube.png" alt="" />
+                      </li>
+                    </a>
+                  </Link>
+                  <Link href={'/'}>
+                    <a>
+                      <li className="bell__right___main____item">
+                        <img src="./images/facebook.png" alt="" />
+                      </li>
+                    </a>
+                  </Link>
+                  <Link href={'/'}>
+                    <a>
+                      <li className="bell__right___main____item">
+                        <img src="./images/twitter.webp" alt="" />
+                      </li>
+                    </a>
+                  </Link>
                 </ul>
               </div>
             </div>
