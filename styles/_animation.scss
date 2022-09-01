@@ -222,3 +222,18 @@
       display:none;
     }
 }
+@keyframes showBackgroundOpacity {
+  0%{
+  opacity:0; 
+  scale:0.2;
+ }
+ 100%{
+  scale:1;
+  opacity:1;
+ }
+}
+.showBackgroundOpacity {
+  animation:showBackgroundOpacity 0.3s;
+  animation-iteration-count:inherit;
+  animation-timing-function: ease-in;
+}

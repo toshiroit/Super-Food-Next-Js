@@ -29,7 +29,6 @@ export default function User({ isActive, children }) {
           {sizeWindow > 654 ? (
             <div className="user__content___flex">
               <div
-                id="userMenuLeftIdx"
                 className="user__content___flex____left"
               >
                 {children[0]}

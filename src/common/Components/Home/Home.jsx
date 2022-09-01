@@ -22,6 +22,7 @@ export default function Home() {
     };
     fetchProduct();
   }, []);
+
   return (
     <div className="bodyIdx">
       <div className="container">

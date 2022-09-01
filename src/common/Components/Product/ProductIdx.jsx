@@ -1,3 +1,4 @@
+import LoadingSpinner from "../Loading/LoadingSpinner";
 import Product from "./Product";
 
 export default function ProductIdx({ title, image, products, size }) {
@@ -17,13 +18,8 @@ export default function ProductIdx({ title, image, products, size }) {
       {products ? (
         <Product products={products} size={size} />
       ) : (
-        <div className="" style={{ width: "100%", textAlign: "center" }}>
-          <div className="loadingio-spinner-rolling-o0si3la4pz">
-            <div className="ldio-cxg4k2dttv5">
-              <div></div>
-            </div>
-          </div>
-        </div>
+
+        <LoadingSpinner css={{ width: "100%", textAlign: "center" }} />
       )}
     </>
   );

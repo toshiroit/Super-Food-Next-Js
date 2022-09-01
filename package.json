@@ -40,7 +40,8 @@
     "redux-thunk": "2.4.1",
     "sass": "^1.54.4",
     "set-cookie-parser": "^2.5.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "eslint": "^8.20.0",

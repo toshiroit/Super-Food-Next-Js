@@ -315,26 +315,7 @@ export default function ProductDetail() {
                 </h4>
               </div>
               <div className="evaluate">
-                <div className="evaluate__point">
-                  <ProductDetailComment />
-                </div>
-                <div className="evaluate__pagination">
-                  <ul className="evaluate__pagination___main">
-                    <li className="item prev">
-                      <i className="fa-solid fa-angle-left" />
-                    </li>
-                    <li className="item active">1</li>
-                    <li className="item">1</li>
-                    <li className="item">1</li>
-                    <li className="item">...</li>
-                    <li className="item">1</li>
-                    <li className="item">1</li>
-                    <li className="item">1</li>
-                    <li className="item next">
-                      <i className="fa-solid fa-angle-right" />
-                    </li>
-                  </ul>
-                </div>
+                <ProductDetailComment />
               </div>
             </div>
           </div>

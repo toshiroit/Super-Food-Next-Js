@@ -485,6 +485,7 @@ html {
           }
         }
       }
+      
       .banner {
         margin-top: 15px;
 
@@ -1756,11 +1757,22 @@ html {
                     display: flex;
                     align-items: center;
                     overflow-x: scroll;
+                    overflow-y:hidden;
+                    &::-webkit-scrollbar{
+                      width:auto;
+                      height:3px;
+                    }
+                    &::-webkit-scrollbar-thumb{
+                      background-color:$sp-color-text-primary;
+                    }
                     &__item {
                       width: 100px;
+                      height:79px;
                       margin-right: 10px;
                       img {
                         width: 100%;
+                        height:100%;
+                        object-fit:cover;
                       }
                     }
                     &:-webkit-scrollbar {
@@ -1775,9 +1787,10 @@ html {
                     padding-top: 8px;
                     margin-top: 15px;
                     display: flex;
+                    flex-wrap:wrap;
                     align-items: center;
                     .w {
-                      width: 90px;
+                      width: 100%;
                     }
                     &__main {
                       display: flex;
@@ -1792,7 +1805,7 @@ html {
                         display: flex;
                         cursor: pointer;
                         background-color: $sp-background-color-white;
-                        margin: 10px;
+                        margin:10px 10px 10px 0px;
                         border: 1px solid #ddd;
                         font-size: 0.9rem;
                         padding: 5px 20px;
@@ -1874,11 +1887,14 @@ html {
                       }
                       &___item {
                         display: inline-block;
-                        width: 120px;
+                        width: 100px;
+                        height:100px;
                         margin-right: 8px;
                         img {
                           border-radius: 5px;
                           width: 100%;
+                          height:100%;
+                          object-fit:cover;
                         }
                       }
                     }
@@ -1942,6 +1958,7 @@ html {
                       border-radius: 8px;
                       padding: 0 8px 8px 8px;
                       width: calc(100% - 15px);
+                      position:relative;
                       .title {
                         @include fontText(0.95rem);
                         .fa-size {
@@ -1963,6 +1980,7 @@ html {
                           resize: none;
                           outline: none;
                           border-radius: 5px;
+                          line-height:1.5;
                           padding: 5px;
                           font-size: 0.9rem;
                           &:focus {
@@ -1974,6 +1992,16 @@ html {
                           @include textOverflow(4);
                           font-size: 0.89rem;
                           line-height: 1.5;
+                        }
+                      }
+                      .remove{
+                        position:absolute;
+                        right:7px;
+                        top:3px;
+                        cursor:pointer;
+                        .fa-size{
+                          font-size:1rem;
+                          color:$sp-color-text-danger;
                         }
                       }
                       button[type="button"],

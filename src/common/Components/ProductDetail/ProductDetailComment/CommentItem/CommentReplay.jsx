@@ -1,4 +1,28 @@
-export default function CommentReplay() {
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { removeComment } from "../../../../redux/features/comment/commentSlice"
+
+export default function CommentReplay({ codeCommentReplay, codeComment, codeShop, user, textComment, dateComment, like, isCheck }) {
+  const dispatch = useDispatch()
+  const [dataUser] = useState({
+    codeUser: '#14769018FJKWI12474',
+    codeShop: 'SHOP4781674917W'
+  })
+  const onRemoveComment = (codeComment, codeCommentReplay, codeShop) => {
+    if (codeComment && codeCommentReplay && codeShop) {
+      const valueRemove = {
+        codeComment,
+        codeCommentReplay,
+        codeShop,
+        dataUser
+      }
+      let isRemove = confirm("Bạn có chắc chắn muốn xóa comment này ");
+      if (isRemove) {
+        dispatch(removeComment({ valueRemove }))
+      }
+
+    }
+  }
   return (
     <div className="repComment">
       <div className="repComment__avatar">
@@ -11,36 +35,22 @@ export default function CommentReplay() {
       </div>
       <div className="repComment__content">
         <div className="title">
-          Lẩu bồ Hà Duyên
+          {user.name}
           <i className="fa-solid fa-circle-check fa-size" />
-          <b>2022-10-20 | 10:43:54 </b>
+          <b>{dateComment}</b>
         </div>
         <div className="text">
           <p>
-            Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ipsa magni neque at! Sed
-            facere placeat eveniet ratione asperiores
-            voluptatibus quis ipsum tempore! Exercitationem
-            ducimus velit culpa minima, soluta nulla
-            architecto. Odit tempore dignissimos impedit
-            deleniti id ad molestiae. Atque assumenda
-            voluptatum officiis facere veritatis, veniam vel
-            doloremque illo tempora corrupti repellat
-            cupiditate velit dolore, consequatur, ducimus
-            error quaerat voluptate deserunt! Error sequi
-            repudiandae eum optio, id modi quia dicta
-            suscipit voluptate quasi explicabo, nemo quos
-            doloremque, repellendus iure! Voluptate vel
-            porro autem nulla inventore quis incidunt
-            veniam, laborum ratione ea. Nisi voluptates
-            consequuntur tempore optio deserunt labore aut
-            dolore quia molestias? Ipsam, eveniet odit
-            quaerat eaque numquam aspernatur dolorem
-            ratione, aperiam impedit aliquid pariatur
-            asperiores natus excepturi animi suscipit
-            maxime.
+            {textComment}
           </p>
         </div>
+        {
+          dataUser && dataUser.codeShop === codeShop ?
+            <div className="remove">
+              <i onClick={() => onRemoveComment(codeComment, codeCommentReplay, codeShop)} class="fa-regular fa-trash-can fa-size"></i>
+            </div>
+            : ''
+        }
       </div>
     </div>
   )
