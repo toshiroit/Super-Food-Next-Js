@@ -1,3 +1,3 @@
-export const selectProductDetail = (state) => state.ProductSlice.productDetail;
-export const selectProductLoading = (state) => state.ProductSlice.loading;
-export const selectProductError = (state) => state.ProductSlice.error
+export const selectProductDetail = (state) => state.productSlice.productDetail;
+export const selectProductLoading = (state) => state.productSlice.loading;
+export const selectProductError = (state) => state.productSlice.error

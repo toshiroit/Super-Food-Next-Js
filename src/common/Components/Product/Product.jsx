@@ -1,6 +1,5 @@
 import ProductItem from "./ProductItem/ProductItem";
 export default function Product({ products, size }) {
-  console.log(products)
   return (
     <div className="product">
       <div className="product__wp">

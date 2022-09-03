@@ -4,13 +4,13 @@ import backgroundFixedSlice from "../features/backgroundFixed/backgroundFixedSli
 import cartSlice from "../features/cart/cartSlice";
 import commentSlice from "../features/comment/commentSlice";
 import notificationSlice from "../features/notification/notificationSlice";
-import ProductSlice from "../features/product/productSlice";
+import productSlice from "../features/product/productSlice";
+import productsSlice from "../features/products/productsSlice";
 import SearchSlice from "../features/Search/SearchSlice";
 import showDisplaySlice from "../features/showDisplay/showDisplaySlice";
 import showMenuMobile from "../features/showDisplay/showMenuMobile";
 import showSearchDisplaySlice from "../features/showDisplay/showSearchDisplaySlice";
 import UserSlice from "../features/User/userSlice";
-
 export default combineReducers({
   showDisplaySlice,
   authSlice,
@@ -18,7 +18,8 @@ export default combineReducers({
   showSearchDisplaySlice,
   showMenuMobile,
   SearchSlice,
-  ProductSlice,
+  productSlice,
+  productsSlice,
   cartSlice,
   notificationSlice,
   commentSlice,

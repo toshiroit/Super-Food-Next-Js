@@ -1,7 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit");
 const { fetchProducts, fetchProductsByFilterParams } = require("./productsThunks");
 
-const ProductsSlice = createSlice({
+const productsSlice = createSlice({
   name: "productsSlice",
   initialState: {
     products: [],
@@ -40,7 +40,8 @@ const ProductsSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
-      (state.error = "Error"), (state.loading = false);
+      state.error = action.error
+      state.loading = true
     });
 
     /** Get Products By Name */
@@ -59,4 +60,5 @@ const ProductsSlice = createSlice({
   },
 });
 
-export default ProductsSlice.reducers;
+export const { setProduct, removeProduct } = productsSlice.actions
+export default productsSlice.reducer;

@@ -8,7 +8,7 @@ const commentSlice = createSlice({
     comments: [
       {
         code: "CIWRY47107715785",
-        codeProduct: 'PRD9124759149',
+        codeProduct: 3,
         codeShop: 'SHOP4781674917W',
         user: {
           name: "Đậu Văn Nam ",
@@ -69,7 +69,7 @@ const commentSlice = createSlice({
       },
       {
         code: "CIWRY4710774815",
-        codeProduct: 'PRD9124759149',
+        codeProduct: 3,
         codeShop: 'SHOP4781674917W',
         user: {
           name: "Lê văn bảo 4",
@@ -102,7 +102,7 @@ const commentSlice = createSlice({
       },
       {
         code: "CIWRY471077112416",
-        codeProduct: 'PRD9124759149',
+        codeProduct: 71,
         codeShop: 'SHOP4781674917W',
         user: {
           name: "Lê văn bảo 9",

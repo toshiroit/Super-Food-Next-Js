@@ -12,7 +12,8 @@ const setHeader = (isAuthRequired, contentType, Authorization) => {
 const createRequest = (method, url, body, isAuthRequired, contentType, Authorization) => {
   return axios({
     method: method,
-    url: BASE_API + url,
+    //url: BASE_API + url,
+    url: url,
     data: body,
     headers: setHeader(isAuthRequired, contentType, Authorization),
   });
@@ -32,5 +33,6 @@ export const RequestServices = {
     return createRequest("DELETE", url, null, isAuthRequired, contentType, authorization);
   },
 };
+
 
 export default RequestServices;

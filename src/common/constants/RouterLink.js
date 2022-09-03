@@ -3,10 +3,12 @@ export const RouterLinkConfig = {
   //*
   index: "/",
 
+  //* Not Found Web **/
+  notFound: '/not-found',
   //* Show Product Detail
   //*
-  productDetailL: (nameProduct) => {
-    return `/product/${nameProduct}`;
+  productDetailL: (nameProduct, codeProduct) => {
+    return `/product/${nameProduct}.${codeProduct}`;
   },
 
   /** Search Product User */

@@ -29,7 +29,7 @@ export default function ProductItem({
   };
   return (
     <li className="product__wp___item">
-      <Link href={RouterLinkConfig.productDetailL(Slug(name))}>
+      <Link href={RouterLinkConfig.productDetailL(Slug(name), codeProduct)}>
         <a>
           <div className="point">
             <span>{point}</span>

@@ -1,3 +1,3 @@
-export const selectProductsState = (state) => state.products;
-export const selectProductPageCount = (state) => state.pageCount;
-export const selectProductTotalElement = (state) => state.totalElement;
+export const selectProductsState = state => state.productsSlice.products;
+export const selectProductPageCount = (state) => state.productsSlice.pageCount;
+export const selectProductTotalElement = (state) => state.productsSlice.totalElement;

@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RouterLinkConfig } from "../../../constants/RouterLink";
 import { selectBackgroundFixedValue } from "../../../redux/features/backgroundFixed/backgroundFixedSelects";
 import { addBackground } from "../../../redux/features/backgroundFixed/backgroundFixedSlice";
 import { selectCommentLoading, selectComments } from "../../../redux/features/comment/commentSelects";
 import { sortComment } from "../../../redux/features/comment/commentSlice";
-import { selectProductDetail, selectProductLoading } from "../../../redux/features/product/productSelects";
+import { selectProductDetail } from "../../../redux/features/product/productSelects";
 import { getProductByCode } from "../../../redux/features/product/productThunks";
 import BackgroundFixed from "../../BackgroundFixed/BackgroundFixed";
 import LoadingSpinner from "../../Loading/LoadingSpinner";
@@ -14,6 +13,7 @@ import CommentItem from "./CommentItem/CommentItem";
 
 export default function ProductDetailComment() {
   const [isActice, setIsActive] = useState()
+  const [isShowComment, setIsShowComment] = useState(false)
   const router = useRouter()
   const dispatch = useDispatch()
   const dataComments = useSelector(selectComments)
@@ -24,17 +24,14 @@ export default function ProductDetailComment() {
 
   useEffect(() => {
     const result = router.query.name.split('.', 2)
-    if (result[1]) {
-      dispatch(getProductByCode(Number(result[1])))
-    }
-    else {
-      router.push(RouterLinkConfig.notFound)
-    }
+
+    dispatch(getProductByCode(Number(result[1])))
   }, [router.query.name])
   const onSortComment = (type) => {
     setIsActive(type)
     dispatch(sortComment({ type }))
   }
+
   const onShowBackgroundFixed = (image, code, type) => {
     const valueBackground = {
       code,
@@ -46,10 +43,10 @@ export default function ProductDetailComment() {
   }
   return (
     <>
-
+      {console.log(dataProductDetail)}
       {stValueBackgroundShow.isActice ? <BackgroundFixed /> : ''}
       {
-        !loadingComment && dataProductDetail && !loadingProductDetail ?
+        !loadingComment && dataProductDetail ?
           <>
             <div className="evaluate__point">
               <div className="evaluate__point___user evaluate__point___top">
@@ -143,8 +140,8 @@ export default function ProductDetailComment() {
                   </div>
                   <ul className="image">
                     {
-                      dataComments && dataProductDetail[0] && dataComments.map(item => {
-                        if (item.codeProduct === dataProductDetail[0].codeProduct) {
+                      dataComments && dataComments.map(item => {
+                        if (item.codeProduct === 3) {
                           return item.commentImages.map(item_w => {
                             return (
                               <li onClick={() => onShowBackgroundFixed(item_w.link, item_w.code, 'image')} className="image__item">
@@ -193,8 +190,8 @@ export default function ProductDetailComment() {
               {/* Item Comment */}
 
               {
-                dataComments && dataProductDetail[0] && dataComments.map((item) => {
-                  if (item.codeProduct === dataProductDetail[0].codeProduct) {
+                dataComments && dataComments.map((item) => {
+                  if (item.codeProduct === 3) {
                     return <>
                       <CommentItem
                         key={item.code}

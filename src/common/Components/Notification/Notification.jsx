@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { removeNotification } from "../../redux/features/notification/notificationSlice"
+import { removeNotification, removeNotificationAll } from "../../redux/features/notification/notificationSlice"
 import ReactHtmlParser from 'react-html-parser';
+import { useRouter } from "next/router";
 
 const Notification = (props) => {
   const [loading, setLoading] = useState(0)
   const [isClose, setIsClose] = useState(false)
   const [intervalID, setIntervalID] = useState(null)
+  const router = useRouter()
   const dispatch = useDispatch()
   useEffect(() => {
     if (loading === 100) {
@@ -17,9 +19,7 @@ const Notification = (props) => {
     handleStarTimer()
   }, [])
 
-  const onAddNotification = () => {
-
-  }
+  useEffect(() => { }, [router])
   const handleStarTimer = () => {
     const id = setInterval(() => {
       setLoading((prev) => {
@@ -38,9 +38,7 @@ const Notification = (props) => {
   const handleCloseNotification = () => {
     handlePauseTimer();
     setIsClose(true)
-    setTimeout(() => {
-      dispatch(removeNotification({ id: props.id }))
-    }, 400)
+    dispatch(removeNotification({ id: props.id }))
   }
   const closeNotification = () => {
     setIsClose(true)

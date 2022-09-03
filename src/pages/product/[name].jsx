@@ -1,7 +1,6 @@
 import ProductDetail from "../../common/Components/ProductDetail/ProductDetail";
 import Head from "next/head";
 export default function ProductDetailId() {
-
   return (
     <>
       <Head>
@@ -10,4 +9,9 @@ export default function ProductDetailId() {
       <ProductDetail />
     </>
   );
+}
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
 }
