@@ -1,7 +1,7 @@
 @import "./function";
 
 .container {
-  max-width: 1180px;
+  max-width: 1247px;
   margin: 0 auto;
   position: relative;
 }
@@ -472,6 +472,10 @@ a {
     &::-webkit-scrollbar-thumb {
       background-color: $sp-background-color-primary;
     }
+    .inputLogin{
+      max-width:450px;
+      margin:auto;
+    }
     .prev {
       position: absolute;
       cursor: pointer;
@@ -677,9 +681,17 @@ a {
   }
 }
 .product {
+  .showAll{
+    cursor:pointer;
+    margin-top:15px;
+    text-align:center;
+    font-weight:600;
+    font-size:0.9rem;
+    }
   &__wp {
     display: flex;
     flex-wrap: wrap;
+    
     &___item {
       cursor: pointer;
       transition: all 0.3s;
@@ -687,7 +699,12 @@ a {
       position: relative;
       margin: 11px;
       width: calc(16.66666666% - 22px);
-      box-shadow: 0 0 5px #ddd;
+      background-color:$sp-background-color-white;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(235, 235, 235);
+      border-image: initial;
+      border-radius: 12px;
       .freeShip {
         position: absolute;
         right: -7px;
@@ -700,25 +717,29 @@ a {
       }
       .point {
         position: absolute;
-        right: 0;
+        right: 3px;
         background-color: $sp-color-text-primary;
         color: $sp-color-text-white;
-        padding: 6px;
         z-index: 999;
+        top:2px;
+        font-weight:600;
         border-radius: 50%;
-
-        font-weight: 500;
+        width:25px;
+        height:25px;
+        line-height:26px;
+        text-align:center;
         font-size: 0.8rem;
       }
       .image {
         overflow: hidden;
-        width: 174px;
+        width: 100%;
         height: 200px;
         max-width: 100%;
         &:hover > img {
           transform: scale(1.1);
         }
         img {
+          border-radius:9px;
           transition: all 0.3s;
           object-fit: cover;
           width: 100%;
@@ -727,35 +748,59 @@ a {
         }
       }
       .sellable {
-        padding: 6px;
-        display: flex;
-        align-items: flex-end;
-        h4 {
-          font-size: 0.87rem;
-          font-weight: 400;
-          color: $sp-color-text-success;
-        }
-        b {
-          font-weight: 500;
-          line-height: 1;
-          margin-left: 2.5px;
-          font-family: "Roboto", sans-serif;
-          font-size: 0.92rem;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        .col-1{
+          padding: 6px;
+          display: flex;
+          align-items:center;
+          &:first-child{
+            b{
+              font-weight:500;
+            }
+          }
+          &:last-child{
+            b{
+              font-weight:400;
+              line-height:3px;
+            }
+          }
+          span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: $sp-color-text-success;
+          }
+          b {
+            line-height: 1;
+            color:#000;
+            font-size: 0.9rem;
+          }
+          img{
+            width:29px;
+          }
+          box-icon{
+            width:1.2rem;
+          }
         }
       }
       .name {
         padding: 6px;
-        height: 40px;
+        min-height: 40px;
+        margin-top:6px;
+      
         p {
-          font-family: "Roboto", sans-serif;
           width: 100%;
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+          font-weight:600;
           overflow: hidden;
         }
       }
+      
       .price {
         padding: 5px;
         margin-top: 5px;
@@ -765,12 +810,13 @@ a {
         }
         .t1 {
           text-decoration: line-through;
-          font-size: 0.88rem;
+          font-size: 0.9rem;
+          font-weight:500;
           color: #787878;
         }
         .t2 {
           margin-left: 5px;
-          font-weight: 500;
+          font-weight: 600;
         }
       }
       .description {
@@ -802,7 +848,7 @@ a {
         }
       }
       .btn {
-        padding: 5px;
+        padding: 10px;
         margin-top: 10px;
         button[type="button"],
         [type="submit"] {
@@ -810,15 +856,20 @@ a {
           cursor: pointer;
           padding: 10px;
           border-radius: 8px;
-          font-family: "Roboto", sans-serif;
           font-size: 1rem;
           outline: none;
           border: none;
-          color: $sp-color-text-dark;
-          background-color: #ebebebdd;
+          font-weight:600;
+          color: #282828;
+          background-color: rgb(241 241 241 / 87%);
           width: 100%;
+          display:flex;
+          justify-content:center;
+          align-items:center;
           .fa-size {
-            color: rgb(255, 112, 16);
+            margin-right:4px;
+            line-height:9px;
+            color:#282828;
           }
         }
       }

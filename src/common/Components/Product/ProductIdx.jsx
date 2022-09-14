@@ -7,7 +7,7 @@ export default function ProductIdx({ title, image, products, size }) {
       <div className="main__wp1___title">
         <h4>
           <picture>
-            <img src="./images/1200px-NewStar.svg.png" alt="" />
+            <img src={image} alt="" />
           </picture>
           Khám phá quản mới
         </h4>

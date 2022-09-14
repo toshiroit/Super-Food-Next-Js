@@ -13,6 +13,13 @@ const productSlice = createSlice({
       if (action.payload.nameProduct) {
       }
     },
+    setProduct: (state, action) => {
+      console.log(action.payload)
+      if (action.payload.productDetail) {
+
+      }
+      return state;
+    }
   },
   extraReducers: (builder) => {
     // Get product By Name
@@ -32,6 +39,7 @@ const productSlice = createSlice({
 
     // Get Product By Code
     builder.addCase(getProductByCode.pending, (state) => {
+      state.productDetail = null;
       state.loading = true;
     });
     builder.addCase(getProductByCode.rejected, (state, action) => {
@@ -40,10 +48,10 @@ const productSlice = createSlice({
     });
     builder.addCase(getProductByCode.fulfilled, (state, action) => {
       state.loading = false;
-      state.productDetail = action.payload.product
+      state.productDetail = action.payload.product[0]
     })
 
   },
 });
-export const { getProduct } = productSlice.actions;
+export const { getProduct, setProduct } = productSlice.actions;
 export default productSlice.reducer;

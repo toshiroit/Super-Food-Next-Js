@@ -49,15 +49,25 @@ export default function ProductItem({
             </span>
           </div>
           <div className="sellable">
-            <h4>Đã bán :</h4>
-            <b>465K</b>
+            <div className="col-1">
+              <span>Đã bán : <b>124K</b></span>
+            </div>
+            <div className="col-1">
+              <box-icon name='map'></box-icon>
+              <b>3.km</b>
+            </div>
+          </div>
+          <div className="address">
+
           </div>
         </a>
       </Link>
       <div className="btn">
         <button type="button">
           <i className="fa-solid fa-basket-shopping fa-size" />
-          Chọn mua
+          <span>
+            Chọn mua
+          </span>
         </button>
       </div>
     </li>

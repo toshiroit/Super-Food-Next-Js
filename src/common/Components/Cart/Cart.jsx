@@ -75,9 +75,7 @@ export default function Cart() {
     },
   ];
   useEffect(() => {
-    const data = JSON.parse(LocalStorage("cart", null, "GET"));
     // LocalStorage("cart", dataCartShop, "SET");
-    setDataCartLocal(data);
   }, []);
   const onOrder = (e) => {
     e.preventDefault();
@@ -132,7 +130,7 @@ export default function Cart() {
                     </ul>
                   </div>
                   <ul className="main">
-                    <CartItem dataCartShop={dataCartLocal} />
+                    <CartItem dataCartShop={dataCartShop} />
                   </ul>
                 </div>
                 <div className="right">

@@ -13,7 +13,6 @@ export const getProductByName = createAsyncThunk("product/getProductByName", asy
 
 export const getProductByCode = createAsyncThunk('product/getProductByCode', async (code) => {
   const url = `https://62f0bc86e2bca93cd23bd902.mockapi.io/api/product/product?codeProduct=${code}`;
-
   const responsive = await RequestServices.get(url).then(res => {
     if (res.data) {
       return {

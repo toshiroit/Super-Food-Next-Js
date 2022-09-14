@@ -1,6 +1,5 @@
 import React from "react";
 import ShopHeader from "./ShopHeader/ShopHeader";
-import ShopInfo from "./ShopInfo/ShopInfo";
 
 export default function Shop({ children }) {
   return (

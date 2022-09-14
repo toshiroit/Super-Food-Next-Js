@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { RouterLinkConfig } from "../../../constants/RouterLink";
 import { addNotification } from "../../../redux/features/notification/notificationSlice";
+import { selectProductDetail, selectProductLoading } from "../../../redux/features/product/productSelects";
 
 export default function ProductDetailRoot() {
   const dispatch = useDispatch()
+  const dataProductDetail = useSelector(selectProductDetail);
+  const loadingProductDetail = useSelector(selectProductLoading)
   const [quality, setQuality] = useState(1)
   const onChaneQuality = (value) => {
     if (value > 0) {
@@ -33,6 +36,7 @@ export default function ProductDetailRoot() {
   }
   return (
     <>
+      {console.log(dataProductDetail, '-', loadingProductDetail)}
       <div className="common">
         <div className="photo">
           <div className="photo__box">
@@ -40,15 +44,17 @@ export default function ProductDetailRoot() {
             <div className="videoShow" />
           </div>
           <ul className="photo__side">
-            <li className="photo__side___item">
-              <picture>
-                <img src={"http://caresspet.com/wp-content/uploads/2018/10/s16-1024x768.jpg"} alt="" />
-              </picture>
-            </li>
+            {
+              dataProductDetail && !loadingProductDetail ? <li className="photo__side___item">
+                <picture>
+                  <img src={dataProductDetail.image} alt="" />
+                </picture>
+              </li> : ''
+            }
           </ul>
         </div>
         <div className="info">
-          <div className="info__basic">
+          {dataProductDetail && !loadingProductDetail ? <div className="info__basic">
             <div className="categorywp">
               <div className="wp">
                 <span>
@@ -189,89 +195,93 @@ export default function ProductDetailRoot() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> : ''
+          }
         </div>
         <div className="viewShop">
-          <h4 className="title">Xem SHOP</h4>
-          <div className="content">
-            <div className="content__avatar">
-              <div className="img">
-                <picture>
-                  <img
-                    src="https://loanthehongnhan.vn/hinh-anh-anime-doi/imager_29338.jpg"
-                    alt=""
-                  />
-                </picture>
-              </div>
-              <div className="nameCheck">
-                <div className="check">
-                  <i className="fa-solid fa-circle-check fa-size" />
-                  <span>Đã kiểm tra </span>
+          {dataProductDetail && !loadingProductDetail ? <>
+            <h4 className="title">Xem SHOP</h4>
+            <div className="content">
+              <div className="content__avatar">
+                <div className="img">
+                  <picture>
+                    <img
+                      src="https://loanthehongnhan.vn/hinh-anh-anime-doi/imager_29338.jpg"
+                      alt=""
+                    />
+                  </picture>
                 </div>
-                <div className="name">
-                  <span>Lẩu Bò Hà Duyên</span>
+                <div className="nameCheck">
+                  <div className="check">
+                    <i className="fa-solid fa-circle-check fa-size" />
+                    <span>Đã kiểm tra </span>
+                  </div>
+                  <div className="name">
+                    <span>Lẩu Bò Hà Duyên</span>
+                  </div>
+                </div>
+              </div>
+              <div className="content__info">
+                <ul className="content__info___main">
+                  <li className="content__info___main____item">
+                    <div className="wp">
+                      <span>
+                        <i className="fa-solid fa-star fa-size" />
+                        Đánh Giá :
+                      </span>
+                      <b>4.4k</b>
+                    </div>
+                  </li>
+                  <li className="content__info___main____item">
+                    <div className="wp">
+                      <span>
+                        <i className="fa-solid fa-user-clock fa-size" />
+                        Theo dõi :
+                      </span>
+                      <b>4.4k</b>
+                    </div>
+                  </li>
+                  <li className="content__info___main____item">
+                    <div className="wp">
+                      <span>
+                        <i className="fa-solid fa-box fa-size" />
+                        Sản phẩm:
+                      </span>
+                      <b>49.4k</b>
+                    </div>
+                  </li>
+                  <li className="content__info___main____item">
+                    <div className="wp">
+                      <span>
+                        <i className="fa-solid fa-bag-shopping fa-size" />
+                        Đã bán :
+                      </span>
+                      <b>942.4k</b>
+                    </div>
+                  </li>
+                </ul>
+                <div className="content__info___btnShow">
+                  <Link
+                    href={RouterLinkConfig.shopIndex(
+                      "lau-nha-lam-viet-nam"
+                    )}
+                  >
+                    <a>
+                      <button type="button">
+                        <i className="fa-solid fa-eye fa-size" />
+                        Xem shop
+                      </button>
+                    </a>
+                  </Link>
+                  <button type="button">
+                    <i className="fa-solid fa-plus fa-size" />
+                    Theo dõi
+                  </button>
                 </div>
               </div>
             </div>
-            <div className="content__info">
-              <ul className="content__info___main">
-                <li className="content__info___main____item">
-                  <div className="wp">
-                    <span>
-                      <i className="fa-solid fa-star fa-size" />
-                      Đánh Giá :
-                    </span>
-                    <b>4.4k</b>
-                  </div>
-                </li>
-                <li className="content__info___main____item">
-                  <div className="wp">
-                    <span>
-                      <i className="fa-solid fa-user-clock fa-size" />
-                      Theo dõi :
-                    </span>
-                    <b>4.4k</b>
-                  </div>
-                </li>
-                <li className="content__info___main____item">
-                  <div className="wp">
-                    <span>
-                      <i className="fa-solid fa-box fa-size" />
-                      Sản phẩm:
-                    </span>
-                    <b>49.4k</b>
-                  </div>
-                </li>
-                <li className="content__info___main____item">
-                  <div className="wp">
-                    <span>
-                      <i className="fa-solid fa-bag-shopping fa-size" />
-                      Đã bán :
-                    </span>
-                    <b>942.4k</b>
-                  </div>
-                </li>
-              </ul>
-              <div className="content__info___btnShow">
-                <Link
-                  href={RouterLinkConfig.shopIndex(
-                    "lau-nha-lam-viet-nam"
-                  )}
-                >
-                  <a>
-                    <button type="button">
-                      <i className="fa-solid fa-eye fa-size" />
-                      Xem shop
-                    </button>
-                  </a>
-                </Link>
-                <button type="button">
-                  <i className="fa-solid fa-plus fa-size" />
-                  Theo dõi
-                </button>
-              </div>
-            </div>
-          </div>
+          </> : ''
+          }
         </div>
       </div>
 

@@ -47,7 +47,7 @@ export default function Search() {
     };
     fetchProduct();
   }, [router.query]);
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   /* OnChange Get Value Filter */
   const onChangeFilter = (e) => {
     if (e.target.name === "area") {
@@ -229,13 +229,14 @@ export default function Search() {
               </ul>
             </div>
             <div className="bd">
+              <Product products={product} isShowAll={false} />
               <div className="product" style={{ textAlign: "center" }}>
                 {/*                <Product products={product} /> */}
-                <div className="loadingio-spinner-rolling-o0si3la4pz">
+                {/*    <div className="loadingio-spinner-rolling-o0si3la4pz">
                   <div className="ldio-cxg4k2dttv5">
                     <div></div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="pagination">

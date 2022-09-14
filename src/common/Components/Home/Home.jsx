@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductByCode } from "../../redux/features/product/productThunks";
 import { selectProductsState } from "../../redux/features/products/productsSelector";
 import { fetchProducts } from "../../redux/features/products/productsThunks";
 import Banner from "../Banner/Banner";
+import Bannerbackup from "../Banner/Bannerbackup";
 import ProductIdx from "../Product/ProductIdx";
 import ProductTopMenu from "../Product/ProductTopMenu";
 import Trademark from "../Trademark/Trademark";
@@ -37,8 +37,9 @@ export default function Home() {
 
   return (
     <div className="bodyIdx">
+      <Banner />
       <div className="container">
-        <Banner />
+        <Bannerbackup />
         <div className="main">
           <div className="main__wp1">
             <ProductTopMenu />
@@ -46,12 +47,20 @@ export default function Home() {
         </div>
         <div className="main">
           <div className="main__wp1">
-            <ProductIdx products={products} size={6} />
+            <ProductIdx
+              products={products}
+              size={6}
+              image={"/images/new-items.png"}
+            />
           </div>
         </div>
         <div className="main">
           <div className="main__wp1">
-            <ProductIdx products={products} size={6} />
+            <ProductIdx
+              products={products}
+              size={6}
+              image={"/images/new-items.png"}
+            />
           </div>
         </div>
         <div className="main">

@@ -1,5 +1,5 @@
 import ProductItem from "./ProductItem/ProductItem";
-export default function Product({ products, size }) {
+export default function Product({ products, size, isShowAll }) {
   return (
     <div className="product">
       <div className="product__wp">
@@ -33,6 +33,11 @@ export default function Product({ products, size }) {
           }
         })}
       </div>
+      {
+        isShowAll ? <div className="showAll">
+          <span>XEM TẤT CẢ   <i class="fa-solid fa-chevron-right"></i></span>
+        </div> : ''
+      }
     </div>
   );
 }

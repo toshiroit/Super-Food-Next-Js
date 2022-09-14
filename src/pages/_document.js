@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/no-css-tags */
 import { Html, Head, Main, NextScript } from "next/document";
-
 export default function Document() {
   const getInitialProps = async (ctx) => {
     const initialProps = await getInitialProps(ctx);
@@ -17,6 +16,8 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet" />
+        <link href="/plugins/boxicons-2.1.2/css/boxicons.css" />
         <script src="/plugins/lordicon/xdjxvujz.js"></script>
         <script src="/plugins/jquery.3.6.0/query-3.6.0.min.js"></script>
       </Head>
@@ -28,6 +29,7 @@ export default function Document() {
       <script src="/js/main.js"></script>
       <script src="/js/animation.min.js"></script>
       <script src="/js/menu.min.js"></script>
+      <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
     </Html>
   );
 }

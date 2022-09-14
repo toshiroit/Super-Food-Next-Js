@@ -1,9 +1,12 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { RouterLinkConfig } from "../../constants/RouterLink";
 
 export default function Banner() {
   const [widthBannerAll, setWidthBannerAll] = useState(0);
   const [btnSlider, setBtnSlider] = useState(false);
   const [widthBanner, setWidthBanner] = useState(0);
+  const router = useRouter()
   const onSlider = (value, width) => {
     let count = widthBannerAll;
     let allItemBannerIdx = document.getElementsByClassName(
@@ -47,49 +50,62 @@ export default function Banner() {
     // }, 3500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [widthBannerAll]);
+  const onSearch = (e) => {
+    e.preventDefault();
+    router.push(RouterLinkConfig.search('a'))
+  }
   return (
     <div className="banner">
       <div className="banner__inner">
-        <div className="btnLeft btnSlider">
-          <button
-            onClick={() => onSlider("left", widthBannerAll)}
-            id="sliderIdxWebLeft"
-            type="button"
-          >
-            <i className="fa-solid fa-angle-left fa-size" />
-          </button>
-        </div>
-        <div className="btnRight btnSlider">
-          <button
-            onClick={() => onSlider("right", widthBannerAll)}
-            id="sliderIdxWebRight"
-            type="button"
-          >
-            <i className="fa-solid fa-angle-right fa-size" />
-          </button>
-        </div>
-        <ul id="bannerSliderWebIdxUser" className="banner__inner___main">
-          <li className="banner__inner___main____item bannerItemIdxWebUser">
-            <div className="image">
-              <picture>
-                <img
-                  src="https://img.freepik.com/free-vector/flat-design-food-banner-template_23-2149076251.jpg?w=2000"
-                  alt=""
+        <div className="container">
+          <div className="banner__inner___title">
+            <h4>
+              TÌM VÀ ĐẶT MÓN
+            </h4>
+            <h4>
+              TÍCH ĐIỂM GIẢM GIÁ
+            </h4>
+          </div>
+          <form onSubmit={onSearch}>
+            <div className="wrapper">
+              <div className="wrapper__search">
+                <span className="iconSearch">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+
+
+                <input
+                  type='text'
+                  placeholder="Tìm đồ ăn vặt buối tối - trà sữa - đồ ăn đêm ngay bây giờ nào "
                 />
-              </picture>
+                <ul style={{ display: "none" }} className="wrapper__search___listSearch">
+                  <h4>Kết quả tìm kiếm </h4>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                  <li className="itemSearch">
+                    <i class="fa-regular fa-hand-point-right"></i>124124124124124
+                  </li>
+                </ul>
+              </div>
             </div>
-          </li>
-          <li className="banner__inner___main____item bannerItemIdxWebUser">
-            <div className="image">
-              <picture>
-                <img
-                  src="https://img.freepik.com/premium-psd/delicious-food-sale-social-media-banner-template_117751-219.jpg?w=1380"
-                  alt=""
-                />
-              </picture>
-            </div>
-          </li>
-        </ul>
+          </form>
+        </div>
       </div>
     </div>
   );

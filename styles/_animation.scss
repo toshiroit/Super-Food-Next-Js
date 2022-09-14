@@ -237,3 +237,8 @@
   animation-iteration-count:inherit;
   animation-timing-function: ease-in;
 }
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}

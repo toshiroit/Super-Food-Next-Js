@@ -128,12 +128,24 @@ export default function Header() {
             <div className="bottombar">
               <div className="bottombar__left">
                 <Link href={RouterLinkConfig.index}>
-                  <a>
+                  {/** 
+<a>
                     <div className="logo">
                       <picture>
-                        <img src="/images/logo1.jpg" alt="" />
+                        <img src="/images/text-logo.png" alt="" />
                       </picture>
                     </div>
+                  </a>
+                  **/}
+                  <a>
+                    <span>
+                      <b className="b-1">
+                        SUPER
+                      </b>
+                      <b className="b-2">
+                        FOODVN
+                      </b>
+                    </span>
                   </a>
                 </Link>
                 <div className="bottombar__left___group">
@@ -168,7 +180,7 @@ export default function Header() {
                       <p>Báo lỗi</p>
                     </li>
                   </ul>
-                  <Search />
+                  {/**  <Search />**/}
                 </div>
               </div>
 

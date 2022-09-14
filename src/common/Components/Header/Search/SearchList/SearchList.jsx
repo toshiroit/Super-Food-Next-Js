@@ -62,9 +62,7 @@ export default function SearchList({ nameSearch, refInputSearch }) {
                   </li>
                 )
               }
-
             })
-
           }
           <div className="search__list___wp____show">
             <p>Xem thêm</p>
@@ -88,31 +86,6 @@ export default function SearchList({ nameSearch, refInputSearch }) {
           <li className="keyword__item">Cơm chiên</li>
           <li className="keyword__item">Cơm sinh viên</li>
           <li className="keyword__item">Cơm 0đ</li>
-        </ul>
-      </div>
-      <div className="wp">
-        <div className="title">
-          <i className="fa-solid fa-list" /> Danh mục phổ biến
-        </div>
-        <ul className="category">
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
-          <li className="category__item">
-            <span>Lẩu gia đình </span>
-          </li>
         </ul>
       </div>
     </div>
