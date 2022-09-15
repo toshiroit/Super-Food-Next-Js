@@ -41,3 +41,13 @@ export const fetchProducts = createAsyncThunk("product/fetchProducts", async (pa
   }
 });
 
+export const getProductsByName = createAsyncThunk('products/getProductsByName', async (name) => {
+  const url = "https://62f0bc86e2bca93cd23bd902.mockapi.io/api/product/product"
+  const responsive = await RequestServices.get(url, true, '', false);
+  console.log(responsive)
+  return {
+    products: responsive.data,
+    pagesCount: 1,
+    totalElements: 2
+  }
+})

@@ -4,6 +4,7 @@ import { RouterLinkConfig } from "../../constants/RouterLink";
 
 export default function Banner() {
   const [widthBannerAll, setWidthBannerAll] = useState(0);
+  const [textSearch, setTextSearch] = useState(null)
   const [btnSlider, setBtnSlider] = useState(false);
   const [widthBanner, setWidthBanner] = useState(0);
   const router = useRouter()
@@ -52,7 +53,7 @@ export default function Banner() {
   }, [widthBannerAll]);
   const onSearch = (e) => {
     e.preventDefault();
-    router.push(RouterLinkConfig.search('a'))
+    router.push(RouterLinkConfig.search(textSearch))
   }
   return (
     <div className="banner">
@@ -76,6 +77,7 @@ export default function Banner() {
 
                 <input
                   type='text'
+                  onChange={(e) => setTextSearch(e.target.value)}
                   placeholder="Tìm đồ ăn vặt buối tối - trà sữa - đồ ăn đêm ngay bây giờ nào "
                 />
                 <ul style={{ display: "none" }} className="wrapper__search___listSearch">

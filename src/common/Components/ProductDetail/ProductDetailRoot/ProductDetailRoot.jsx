@@ -21,7 +21,6 @@ export default function ProductDetailRoot() {
       }
       else {
         setQuality(quality);
-
       }
     }
   }
@@ -36,7 +35,6 @@ export default function ProductDetailRoot() {
   }
   return (
     <>
-      {console.log(dataProductDetail, '-', loadingProductDetail)}
       <div className="common">
         <div className="photo">
           <div className="photo__box">

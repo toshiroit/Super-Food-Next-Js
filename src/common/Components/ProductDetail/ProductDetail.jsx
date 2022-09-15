@@ -43,7 +43,6 @@ export default function ProductDetail() {
             <div className="detail__content___breadcrumb breadcrumb__content">
               <BreadCrumb data={dataBreadcrumb} />
             </div>
-            {console.log(dataProductDetail)}
             <div className={`detail__content___product ${dataProductDetail ? '' : 'productDetailLoading'}`}>
               {
                 <ProductDetailRoot />

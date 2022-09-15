@@ -11,6 +11,9 @@ module.exports = async (phase, { defaultConfig }) => {
     images: {
       domains: ["http://localhost:3000/"],
     },
+    experimental: {
+      concurrentFeatures: true,
+    },
   }
   return nextConfig
 }

@@ -1,95 +1,16 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
-import { LocalStorage } from "../../lib/Localstorage/Localstorage";
-import { selectCartProductGroup } from "../../redux/features/cart/cartSelects";
+import { RouterLinkConfig } from "../../constants/RouterLink";
+import { selectCartProducts } from "../../redux/features/cart/cartSelects";
 import BreadCrumb from "../Breadcrumb/BreadCrumb";
 import CartItem from "./CartItem/CartItem";
 import CartPay from "./CartPay/CartPay";
 
 export default function Cart() {
-  const dataCartRx = useSelector(selectCartProductGroup);
-  const [dataCartLocal, setDataCartLocal] = useState();
-  let dataCartShop = [
-    {
-      codeShop: "SHOP12471761274",
-      nameShop: "Lẩu cay trùng khánh ",
-      imageShop: "",
-      productCart: [
-        {
-          code: "PD228124812",
-          codeShop: "SH14751WLAW",
-          nameShop: "Cửa hàng lẩu trùng khánh ",
-          info: "",
-          image:
-            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
-          nameProduct: "Lẩu trùng khánh cay nhẹ ",
-          price: 146000,
-          discount: 23,
-          quality: 23,
-        },
-        {
-          code: "PD48124612",
-          codeShop: "SH14751WLAW",
-          nameShop: "Cửa hàng lẩu trùng khánh ",
-          info: "",
-          image:
-            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
-          nameProduct: "Lẩu trùng khánh cay nhẹ ",
-          price: 146000,
-          discount: 23,
-          quality: 23,
-        },
-      ],
-    },
-    {
-      codeShop: "SHOP12128611741",
-      nameShop: "Lẩu cay trùng khánh ",
-      imageShop: "",
-      productCart: [
-        {
-          code: "PD961741",
-          codeShop: "SH14751WLAW",
-          nameShop: "Cửa hàng lẩu trùng khánh ",
-          info: "",
-          image:
-            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
-          nameProduct: "Lẩu trùng khánh cay nhẹ ",
-          price: 146000,
-          discount: 23,
-          quality: 23,
-        },
-        {
-          code: "PD1614812",
-          codeShop: "SH14751WLAW",
-          nameShop: "Cửa hàng lẩu trùng khánh ",
-          info: "",
-          image:
-            "https://salt.tikicdn.com/cache/w78/ts/product/66/68/47/10c4405af274b68983c13cc6f03281fb.jpg.webp",
-          nameProduct: "Lẩu trùng khánh cay nhẹ ",
-          price: 146000,
-          discount: 23,
-          quality: 23,
-        },
-      ],
-    },
-  ];
-  useEffect(() => {
-    // LocalStorage("cart", dataCartShop, "SET");
-  }, []);
   const onOrder = (e) => {
     e.preventDefault();
   };
-  const totalProductCart = (dataCartShop) => {
-    let sizeProduct = [];
-    dataCartShop &&
-      dataCartShop.map((item) => {
-        item.productCart.map((productCart) => {
-          sizeProduct.push(productCart);
-        });
-      });
-    return sizeProduct.length;
-  };
+  const cartProductsRx = useSelector(selectCartProducts)
   return (
     <div className="cart">
       <div className="container">
@@ -100,7 +21,11 @@ export default function Cart() {
           <div className="cart__content___main">
             <form onSubmit={onOrder}>
               <div className="cart__content___main____title">
-                <h4>Giỏ hàng</h4>
+                <Link href={RouterLinkConfig.index}>
+                  <a>
+                    <h4><i className="fa-solid fa-cart-shopping"></i>Giỏ hàng</h4>
+                  </a>
+                </Link>
               </div>
               <div className="cart__content___main____inner">
                 <div className="left">
@@ -110,7 +35,7 @@ export default function Cart() {
                         <input type="checkbox" className="" name="" id="" />
                         <label className="check-box" />
                         <span>
-                          Tất cả ( {totalProductCart(dataCartLocal)} sản phẩm ){" "}
+                          Tất cả ( {cartProductsRx.length} sản phẩm ){" "}
                         </span>
                       </li>
                       <li className="header__main___item price">
@@ -130,7 +55,7 @@ export default function Cart() {
                     </ul>
                   </div>
                   <ul className="main">
-                    <CartItem dataCartShop={dataCartShop} />
+                    <CartItem />
                   </ul>
                 </div>
                 <div className="right">

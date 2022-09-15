@@ -461,34 +461,7 @@ html {
         cursor: pointer;
       }
     }
-    .bodyIdx {
-      .category {
-        border-top: 1px solid #ddd;
-        margin-top: 12px;
-
-        padding: 10px;
-        &__list {
-          &___item {
-            border: 1px solid #ddd;
-            display: inline-block;
-            padding: 8px;
-            border-radius: 3px;
-            font-family: "Roboto", sans-serif;
-            font-weight: 450;
-            width: calc(15% - 8px);
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            margin: 8px;
-            &:hover {
-              background-color: $sp-background-color-primary-2;
-              color: $sp-color-text-white;
-            }
-          }
-        }
-      }
-      
-      .banner {
+ .banner {
         background-color:#F0F0F0;
         &__inner {
             position: relative;
@@ -661,6 +634,34 @@ html {
           }
         }
       }
+    .bodyIdx {
+      .category {
+        border-top: 1px solid #ddd;
+        margin-top: 12px;
+
+        padding: 10px;
+        &__list {
+          &___item {
+            border: 1px solid #ddd;
+            display: inline-block;
+            padding: 8px;
+            border-radius: 3px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 450;
+            width: calc(15% - 8px);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            margin: 8px;
+            &:hover {
+              background-color: $sp-background-color-primary-2;
+              color: $sp-color-text-white;
+            }
+          }
+        }
+      }
+      
+     
       .bannerwp{
         &__inner {
           margin-top:13px;
@@ -2263,10 +2264,26 @@ html {
     }
     .search {
       &__content {
-        background-color: $sp-background-color-white;
+       // background-color: $sp-background-color-white;
         padding: 0;
         &___inner {
           .header {
+            &__list{
+              display:flex;
+              align-items:center;
+              .active{
+                color:#0070ff;
+                border:1px solid $sp-background-color-primary;
+              }
+              &___item{
+                cursor:pointer;
+                margin:5px;
+                font-weight:500;
+                font-size:0.9rem;
+                padding:7px 10px;
+                border-radius:8px;
+              }
+            }
             padding: 10px;
             &__listSearch {
               border-top: 1px solid #ddd;
@@ -2465,9 +2482,12 @@ html {
             padding: 15px;
             background-color: $sp-background-color-white;
             h4 {
-              font-size: 1.5rem;
-              font-weight: 400;
-              font-family: "Roboto", sans-serif;
+              font-size: 1.3rem;
+              font-weight: 500;
+              i{
+                font-size:0.9rem;
+                margin-right:5px;
+              }
             }
           }
           &____inner {
@@ -2482,7 +2502,6 @@ html {
                 border-radius: 7px;
                 &__main {
                   display: flex;
-
                   align-items: center;
                   justify-content: space-between;
                   // .price {
@@ -2498,7 +2517,9 @@ html {
                   //   margin-left: 103px;
                   // }
                   &___item {
-                    display: inline-block;
+                    
+                    display: flex;
+                    align-items:center;
                     &:first-child {
                       input[type="checkbox"] {
                         width: 1.2em;
@@ -2510,6 +2531,7 @@ html {
                     }
 
                     span {
+                      font-weight:500;
                       font-size: 0.9rem;
                     }
                     // &:first-child {
@@ -2631,7 +2653,8 @@ html {
                       border-radius: 5px;
                     }
                     &::-webkit-scrollbar {
-                      width: 4px;
+                      width: 2px;
+                      height:5px;
                     }
                     .productCart {
                       padding: 10px;

@@ -5,7 +5,7 @@ import { selectProductsState } from "../../redux/features/products/productsSelec
 import { fetchProducts } from "../../redux/features/products/productsThunks";
 import Banner from "../Banner/Banner";
 import Bannerbackup from "../Banner/Bannerbackup";
-import ProductIdx from "../Product/ProductIdx";
+import Product from "../Product/Product";
 import ProductTopMenu from "../Product/ProductTopMenu";
 import Trademark from "../Trademark/Trademark";
 
@@ -15,29 +15,9 @@ export default function Home() {
   const products = useSelector(selectProductsState)
   useEffect(() => {
     dispatch(fetchProducts(1))
-    {
-      /* 
-         const fetchProduct = async () => {
-      const data = await axios
-        .get("https://62f0bc86e2bca93cd23bd902.mockapi.io/api/product/product")
-        .then((res) => {
-          return setProduct(res.data);
-        })
-        .catch((err) => {
-          console.log(err)
-          return err.message;
-        });
-
-    };
-    fetchProduct();
-      */
-    }
-
   }, []);
-
   return (
     <div className="bodyIdx">
-      <Banner />
       <div className="container">
         <Bannerbackup />
         <div className="main">
@@ -47,30 +27,60 @@ export default function Home() {
         </div>
         <div className="main">
           <div className="main__wp1">
-            <ProductIdx
-              products={products}
-              size={6}
-              image={"/images/new-items.png"}
-            />
+            <div className="main__wp1___title">
+              <h4>
+                <picture>
+                  <img src={"/images/new-items.png"} alt="" />
+                </picture>
+                Khám phá quản mới
+              </h4>
+              <div className="alw">
+                <i className="fa-size fa-solid fa-paperclip" />
+              </div>
+            </div>
+            <Product size={12} isShowAll={true} />
           </div>
-        </div>
-        <div className="main">
           <div className="main__wp1">
-            <ProductIdx
-              products={products}
-              size={6}
-              image={"/images/new-items.png"}
-            />
+            <div className="main__wp1___title">
+              <h4>
+                <picture>
+                  <img src={"/images/new-items.png"} alt="" />
+                </picture>
+                Khám phá quản mới
+              </h4>
+              <div className="alw">
+                <i className="fa-size fa-solid fa-paperclip" />
+              </div>
+            </div>
+            <Product size={12} isShowAll={true} />
           </div>
-        </div>
-        <div className="main">
           <div className="main__wp1">
-            <ProductIdx />
+            <div className="main__wp1___title">
+              <h4>
+                <picture>
+                  <img src={"/images/new-items.png"} alt="" />
+                </picture>
+                Khám phá quản mới
+              </h4>
+              <div className="alw">
+                <i className="fa-size fa-solid fa-paperclip" />
+              </div>
+            </div>
+            <Product size={12} isShowAll={true} />
           </div>
-        </div>
-        <div className="main">
           <div className="main__wp1">
-            <ProductIdx />
+            <div className="main__wp1___title">
+              <h4>
+                <picture>
+                  <img src={"/images/new-items.png"} alt="" />
+                </picture>
+                Khám phá quản mới
+              </h4>
+              <div className="alw">
+                <i className="fa-size fa-solid fa-paperclip" />
+              </div>
+            </div>
+            <Product size={12} isShowAll={true} />
           </div>
         </div>
         <Trademark />

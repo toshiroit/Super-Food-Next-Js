@@ -1,5 +1,5 @@
 const { createSlice } = require("@reduxjs/toolkit");
-const { fetchProducts, fetchProductsByFilterParams } = require("./productsThunks");
+const { fetchProducts, fetchProductsByFilterParams, getProductsByName } = require("./productsThunks");
 
 const productsSlice = createSlice({
   name: "productsSlice",
@@ -7,7 +7,7 @@ const productsSlice = createSlice({
     products: [],
     pageCount: 1,
     totalElement: 0,
-    loading: false,
+    loading: true,
     error: null,
   },
   reducers: {
@@ -45,18 +45,17 @@ const productsSlice = createSlice({
     });
 
     /** Get Products By Name */
-    builder.addCase(fetchProductsByFilterParams.pending, (state, action) => {
+    builder.addCase(getProductsByName.pending, (state) => {
       state.loading = true;
-    });
-    builder.addCase(fetchProductsByFilterParams.rejected, (state, action) => {
+    })
+    builder.addCase(getProductsByName.fulfilled, (state, action) => {
+      state.products = action.payload.products
       state.loading = false;
-    });
-    builder.addCase(fetchProductsByFilterParams.fulfilled, (state, action) => {
-      state.products = action.payload.items;
-      state.pageCount = action.payload.pagesCount;
-      state.totalElement = action.payload.totalElements;
-      state.loading = false;
-    });
+    })
+    builder.addCase(getProductsByName.rejected, (state, action) => {
+      state.products = 'error'
+      state.loading = true;
+    })
   },
 });
 

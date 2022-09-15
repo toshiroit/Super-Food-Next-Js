@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormatPriceVnd } from "../../../lib/FormatPriceVnd/FormatPriceVnd";
+import { selectCartProducts } from "../../../redux/features/cart/cartSelects";
 import { onChaneCartProduct } from "../../../redux/features/cart/cartSlice";
 
-export default function CartItem({ dataCartShop }) {
-  // Data Product
-  const [dataCart, setDataCart] = useState(dataCartShop);
+export default function CartItem() {
+  // Data  Cart Product
+  const [dataCart, setDataCart] = useState();
+  const [quality, setQuality] = useState(0)
   const [checkAllProductShop, setCheckAllProductShop] = useState([]);
+  const cartProductsRx = useSelector(selectCartProducts)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(onChaneCartProduct({ products: checkAllProductShop }));
   }, [checkAllProductShop, dispatch]);
-  useEffect(() => {
-    setDataCart(dataCartShop);
-  }, [dataCartShop]);
+
   //
   // Result Product by Discount
   const priceDiscount = (price, discount) => {
@@ -31,25 +32,7 @@ export default function CartItem({ dataCartShop }) {
 
   /** Change Quality Product Cart **/
   const onQualityProduct = (codeShop, codeProduct, value) => {
-    let newProductCart = null;
-    let result = null;
-    dataCart.map((item) => {
-      if (item.codeShop === codeShop) {
-        return (newProductCart = item.productCart);
-      }
-    });
-    newProductCart.map((item) => {
-      if (item.code === codeProduct) {
-        if (value > 0) return (item.quality = value);
-      }
-    });
-    result = dataCart.map((item) => {
-      if (item.codeShop === codeShop) {
-        item.productCart = newProductCart;
-      }
-      return item;
-    });
-    setDataCart(result);
+    dispatch(onChaneCartProduct({ typeAction: 'quality', codeShop, codeProduct, value }))
   };
 
   /** Checked Product by one Product **/
@@ -121,13 +104,12 @@ export default function CartItem({ dataCartShop }) {
         if (newProductCheckCart[idxProductShop].isCheckAll) {
           newProductCheckCart[idxProductShop].isCheckAll = isCheck;
           newProductCheckCart[idxProductShop].productCheck = [];
-
           setCheckAllProductShop(newProductCheckCart);
         } else {
           let productCheck = [];
-          dataCart.map((item) => {
+          cartProductsRx.map((item) => {
             if (item.codeShop === codeShop)
-              item.productCart.map((itemCheck) => {
+              item.cartProducts.map((itemCheck) => {
                 productCheck.push({
                   codeProduct: itemCheck.code,
                   isCheck: true,
@@ -140,9 +122,9 @@ export default function CartItem({ dataCartShop }) {
         }
       } else {
         let productCheck = [];
-        dataCart.map((item) => {
+        cartProductsRx.map((item) => {
           if (item.codeShop === codeShop)
-            item.productCart.map((itemCheck) => {
+            item.cartProducts.map((itemCheck) => {
               productCheck.push({
                 codeProduct: itemCheck.code,
                 isCheck: true,
@@ -161,9 +143,9 @@ export default function CartItem({ dataCartShop }) {
       }
     } else {
       let productCheck = [];
-      dataCart.map((item) => {
+      cartProductsRx.map((item) => {
         if (item.codeShop === codeShop)
-          item.productCart.map((itemCheck) => {
+          item.cartProducts.map((itemCheck) => {
             productCheck.push({
               codeProduct: itemCheck.code,
               isCheck: true,
@@ -251,8 +233,9 @@ export default function CartItem({ dataCartShop }) {
 
   return (
     <>
-      {dataCart &&
-        dataCart.map((itemShop) => {
+      {console.log(cartProductsRx)}
+      {cartProductsRx &&
+        cartProductsRx.map((itemShop) => {
           return (
             <li key={itemShop.codeShop} className="main__item">
               <div className="main__item___header">
@@ -265,7 +248,7 @@ export default function CartItem({ dataCartShop }) {
                       )
                     }
                     type="checkbox"
-                    name={`groupShop${itemShop.codeShop}`}
+                    name={`groupShop${itemShop}`}
                     id=""
                   />
                   <div className="wo">
@@ -279,7 +262,7 @@ export default function CartItem({ dataCartShop }) {
                 </div>
               </div>
               <div className="main__item___main">
-                {itemShop.productCart.map((item) => {
+                {itemShop.cartProducts.map((item) => {
                   return (
                     <>
                       <div className="productCart">

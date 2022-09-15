@@ -5,6 +5,7 @@ import { ApiLink } from "../../constants/ApiLink";
 import { RouterLinkConfig } from "../../constants/RouterLink";
 import { showDisplay } from "../../redux/features/showDisplay/showDisplaySlice";
 import { showMenuMobileDisplay } from "../../redux/features/showDisplay/showMenuMobile";
+import Banner from "../Banner/Banner";
 
 import Login from "../Login/Login";
 import MenuMobile from "../MenuMobile/MenuMobile";

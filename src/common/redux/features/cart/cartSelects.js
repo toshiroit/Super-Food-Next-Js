@@ -1,1 +1,2 @@
-export const selectCartProductGroup = (state) => state.productsGroup
+export const selectCartProductGroup = (state) => state.cartSlice.productsGroup
+export const selectCartProducts = (state) => state.cartSlice.cartProducts

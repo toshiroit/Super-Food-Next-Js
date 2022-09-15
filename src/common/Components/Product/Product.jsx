@@ -1,24 +1,14 @@
+import { useSelector } from "react-redux";
+import { selectProductsState } from "../../redux/features/products/productsSelector";
 import ProductItem from "./ProductItem/ProductItem";
-export default function Product({ products, size, isShowAll }) {
+export default function Product({ size, isShowAll }) {
+  const products = useSelector(selectProductsState)
+  console.log(size)
   return (
     <div className="product">
       <div className="product__wp">
         {products && products.map((item, index) => {
-          if (size) {
-            if (index < size) {
-              return (
-                <ProductItem
-                  key={index}
-                  codeProduct={item.codeProduct}
-                  name={item.name}
-                  image={item.image}
-                  price={item.price}
-                  point={item.point}
-                  sale={item.sale}
-                />
-              );
-            }
-          } else {
+          if (index < size) {
             return (
               <ProductItem
                 key={index}
