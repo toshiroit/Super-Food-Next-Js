@@ -12,10 +12,11 @@ export const GET_PRODUCT_BY_NAME = (name, id) =>
 export const GET_USER_BY_PAGE = (page) => `users?page=${page}`;
 export const GET_USER_BY_PHONE = (phone) => `user/?phone=${phone}`;
 export const GET_USER_BY_EMAIL = (email) => `user/?email=${email}`;
+export const UPDATE_USER_BY_CODE = (code) => `user/?code=${code}`
 export const UPDATE_USER_BY_PHONE = `user/update`;
-export const UPDATE_USER_EMAIL_BY_CODE = `user/updateEmail`;
+export const UPDATE_USER_PHONE_BY_CODE = (code, phone) => `user/updatePhone?code=${code}&phone=${phone}`
+export const UPDATE_USER_EMAIL_BY_CODE = (code, email) => `user/updateEmail?code=${code}&email=${email}`;
 export const UPDATE_USER_PASSCV1_BY_CODE = "user/updatePassCv1";
-
 //auth
 export const AUTH_REFRESH_TOKEN = "auth/refresh-token";
 export const AUTH_LOGIN = "auth/login";

@@ -5,7 +5,7 @@ import LoginConfirmInfo from "./LoginConfirmInfo/LoginConfirmInfo";
 import LoginForm from "./LoginForm/LoginForm";
 
 export default function Login() {
-  const isLogin = useSelector((state) => state.UserSlice);
+  const isLogin = useSelector((state) => state.userSlice);
 
   return (
     <>

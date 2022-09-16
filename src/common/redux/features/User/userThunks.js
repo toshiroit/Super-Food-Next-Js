@@ -5,9 +5,11 @@ import {
   GET_USER_BY_EMAIL,
   GET_USER_BY_PAGE,
   GET_USER_BY_PHONE,
+  UPDATE_USER_BY_CODE,
   UPDATE_USER_BY_PHONE,
   UPDATE_USER_EMAIL_BY_CODE,
   UPDATE_USER_PASSCV1_BY_CODE,
+  UPDATE_USER_PHONE_BY_CODE,
 } from "../../../constants/ApiLink";
 import RequestServices from "../../services/request-services";
 
@@ -37,6 +39,20 @@ export const fetchUserByPhone = createAsyncThunk(
     };
   }
 );
+
+export const updateUserByCode = createAsyncThunk(
+  'user/updateUserByCode',
+  async ({ data }, dispatch) => {
+    console.log(data)
+    const responsive = await RequestServices.post(
+      BASE_API + UPDATE_USER_BY_CODE,
+      [code, user]
+    )
+    return {
+      user: responsive.data
+    }
+  }
+)
 export const fetchUserByEmail = createAsyncThunk(
   "user/fetchUserByEmail",
   async (email) => {
@@ -112,6 +128,57 @@ export const updateUserPassCv1ByCode = createAsyncThunk(
     };
   }
 );
+export const updateUserPassCv2ByCode = createAsyncThunk(
+  "user/updateUserPassCv2ByCode",
+  async (password) => {
+    const responsive = await RequestServices.post(
+      BASE_API + UPDATE_USER_PASSCV1_BY_CODE,
+      password,
+      true,
+      "",
+      true
+    );
+    return {
+      data: responsive.data,
+      status: responsive.status,
+    };
+  }
+);
+export const updateUserEmailByCode = createAsyncThunk(
+  'user/updateUserEmail',
+  async (code, email) => {
+    const responsive = await RequestServices.post(
+      BASE_API + UPDATE_USER_EMAIL_BY_CODE(code, email),
+      [code, email],
+      true,
+      '',
+      true
+    )
+    return {
+      data: responsive,
+      err: responsive.error,
+      status: responsive.status
+    }
+  }
+)
+
+export const updateUserPhoneByCode = createAsyncThunk(
+  'user/updateUserPhone',
+  async (code, phone) => {
+    const responsive = await RequestServices.post(
+      BASE_API + UPDATE_USER_PHONE_BY_CODE(code, phone),
+      [code, phone],
+      true,
+      '',
+      true
+    )
+    return {
+      data: responsive,
+      err: responsive.error,
+      status: responsive.status
+    }
+  }
+)
 // export const updateUserPassCv2ByCode = createAsyncThunk('user/updateUserPassCv2ByCode',
 //   async(passwordV2)=>{
 //     const responsive = await RequestServices

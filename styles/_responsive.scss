@@ -10,7 +10,6 @@
         &__left {
           width: 100%;
           &___group {
-            width: 100% !important;
             .menu {
               display: none !important;
             }
@@ -22,7 +21,6 @@
           }
         }
         &__right {
-          margin-top: 10px;
           &___userMobile {
             display: block !important;
           }
@@ -1869,6 +1867,65 @@
           }
 
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:593px){
+  .banner{
+    &__inner{
+      form{
+        .wrapper{
+          &__search{
+            margin-top:270px !important;
+          }
+        }
+      }
+    }    
+  }
+}
+@media only screen and (max-width:505px){
+  .banner{
+    &__inner{
+      &___title{
+        padding:0 !important;
+      }
+      form{
+        .wrapper{
+          &__search{
+          }
+        }
+      }
+    }    
+  }
+}
+@media only screen and (max-width:455px){
+  .banner{
+    &__inner{
+      &___title{
+        h4:last-child{
+            padding-bottom:94px;
+        }
+      }
+      form{
+        .wrapper{
+          &__search{
+          }
+        }
+      }
+    }    
+  }
+}
+@media only screen and (max-width:646px){
+  .navbar{
+    &__bottom{
+     .bottombar{
+        &__left{
+        .menu{
+          display:none !important;
+        }
+      }
       }
     }
   }

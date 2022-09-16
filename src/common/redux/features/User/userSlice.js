@@ -2,17 +2,21 @@ import {
   fetchUser,
   fetchUserByEmail,
   fetchUserByPhone,
+  updateUserByCode,
   updateUserByPhone,
-  updateUserEmailPhoneByCode,
+  updateUserEmailByCode,
+  updateUserPassCv1ByCode,
+  updateUserPassCv2ByCode,
+  updateUserPhoneByCode,
 } from "./userThunks";
 
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice, isAnyOf } = require("@reduxjs/toolkit");
 
 let isPhone = true;
 let isSend = true;
 let isCheckCode = true;
 
-const UserSlice = createSlice({
+const userSlice = createSlice({
   name: "isLoginUser",
   initialState: {
     user: {
@@ -37,9 +41,11 @@ const UserSlice = createSlice({
       isCheckCode: false,
     },
     error: null,
+    mess: null,
     phoneSave: null,
     loading: false,
     pagesCount: 0,
+    isUpdate: false,
     totalElements: 0,
   },
   reducers: {
@@ -161,21 +167,75 @@ const UserSlice = createSlice({
       state.totalElements = action.payload.totalElements;
     });
 
-    /** Update User Email by Code */
-    builder.addCase(updateUserEmailPhoneByCode.pending, (state) => {
+    /** Update User Phone by Code */
+    builder.addCase(updateUserPhoneByCode.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(updateUserPhoneByCode.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.error
+    })
+    builder.addCase(updateUserPhoneByCode.fulfilled, (state, action) => {
+      state.loading = false
+      state.mess = action.payload.data
+    })
+
+
+    /** Update User By Code */
+    builder.addCase(updateUserByCode.pending, (state) => {
       state.loading = true;
-    });
-    builder.addCase(updateUserEmailPhoneByCode.rejected, (state, action) => {
+    })
+    builder.addCase(updateUserByCode.rejected, (state) => {
       state.loading = false;
-      state.error = action.error;
-    });
-    builder.addCase(updateUserEmailPhoneByCode.fulfilled, (state, action) => {
+      state.isUpdate = false;
+    })
+    builder.addCase(updateUserByCode.fulfilled, (state, action) => {
+      state.isCheck = false
       state.loading = false;
-      state.error = null;
-    });
+    })
+
+    /** Update User Email by Code **/
+    builder.addCase(updateUserEmailByCode.pending, (state) => {
+      state.loading = true;
+    })
+    builder.addCase(updateUserEmailByCode.rejected, (state, action) => {
+      state.mess = action.error
+      state.loading = false;
+    })
+    builder.addCase(updateUserEmailByCode.fulfilled, (state, action) => {
+      state.isUpdate = action.payload.data
+      state.loading = false;
+    })
+
+
+    /** Update User Password level 1 by code **/
+    builder.addCase(updateUserPassCv1ByCode.pending, (state) => {
+      state.loading = true;
+    })
+    builder.addCase(updateUserPassCv1ByCode.rejected, (state, action) => {
+      state.loading = false;
+      state.mess = action.error
+    })
+    builder.addCase(updateUserPassCv1ByCode.fulfilled, (state, action) => {
+      state.loading = false;
+      state.mess = action.payload.data
+    })
+
+    /** Update User Password level 2 by code **/
+    builder.addCase(updateUserPassCv2ByCode.pending, (state) => {
+      state.loading = true;
+    })
+    builder.addCase(updateUserPassCv2ByCode.rejected, (state, action) => {
+      state.loading = false;
+      state.mess = action.error
+    })
+    builder.addCase(updateUserPassCv2ByCode.fulfilled, (state, action) => {
+      state.loading = false;
+      state.mess = action.payload.data
+    })
   },
 });
 
 export const { setUser, loginUser, sendCode, confirmRegUser } =
-  UserSlice.actions;
-export default UserSlice.reducer;
+  userSlice.actions;
+export default userSlice.reducer;

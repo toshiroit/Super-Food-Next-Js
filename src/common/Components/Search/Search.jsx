@@ -38,6 +38,20 @@ export default function Search() {
                   Đánh giá cao
                 </li>
               </ul>
+              <div className="header__sort">
+                <select className="header__sort___item">
+                  <option>124124</option>
+                  <option>124124</option>
+                  <option>124124</option>
+                  <option>124124</option>
+                </select>
+                <select className="header__sort___item">
+                  <option>124124</option>
+                  <option>124124</option>
+                  <option>124124</option>
+                  <option>124124</option>
+                </select>
+              </div>
             </div>
             {
               !loadingSearch ? <>

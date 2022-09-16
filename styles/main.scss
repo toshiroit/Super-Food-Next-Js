@@ -29,7 +29,7 @@ html {
   .supership {
     background-color: #f5f5f5;
     .navbar {
-      background-color: $sp-background-color-primary;
+      background-color: rgba(0,132,229,1);
       &__top {
         width: 100%;
         padding: 10px;
@@ -87,7 +87,7 @@ html {
             &___text {
               color: $sp-color-text-white;
               line-height: 20px;
-              font-weight:400;
+              font-weight:500;
               font-size: 0.8rem;
               padding-right: 6px;
               transition: all 0.3s;
@@ -104,13 +104,12 @@ html {
       }
       &__bottom {
         padding-bottom: 10px;
-        margin-top: 18px;
+        margin-top: 12px;
         .bottombar {
           display: flex;
-          //justify-content: space-between;
+          justify-content: space-between;
           align-items: center;
           &__left {
-            width: 79%;
             display: flex;
             align-items: center;
             span{
@@ -141,17 +140,14 @@ html {
                 align-items: center;
                 cursor: pointer;
                 margin-right: 12px;
-                border-bottom: 2.5px solid transparent;
                 &:hover .menu__lv {
                   display: block;
                 }
 
                 &:hover {
-                  border-bottom: 2.5px solid $sp-color-text-blue-1;
                 }
                 p {
                   font-weight: 500;
-                  line-height: 18px;
                   color: $sp-color-text-white;
                   font-size: 0.9rem;
                 }
@@ -304,7 +300,6 @@ html {
           }
           &__right {
             margin-left: 20px;
-            width: calc(21% - 20px);
             &___userMobile {
               color: $sp-color-text-primary;
               font-size: 2rem;
@@ -391,23 +386,26 @@ html {
                 }
                 .quality {
                   position: absolute;
-                  top: -21px;
-                  left: 13px;
+                  top: -15px;
+                  left: 12px;
                   background-color: $sp-background-color-danger;
-                  padding: 7px;
                   border-radius: 50%;
-                  width: 28px;
-                  height: 27px;
+                  width: 23px;
+                  line-height:24px;
+                  height: 23px;
                   color: $sp-color-text-white;
-                  font-size: 0.8rem;
-                  line-height: 14px;
+                  font-size: 0.9rem;
+                  font-weight:600;
                   text-align: center;
+                  span{
+                    line-height: 14px;
+
+                  }
                 }
               }
               .text {
                 cursor: pointer;
                 display: flex;
-                align-items: flex-end;
                 font-weight: 500;
                 color: #fff;
                 margin-right: 10px;
@@ -426,7 +424,7 @@ html {
                 @include fontText(1rem);
               }
               .fa-size {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 margin-right: 3px;
                 color: $sp-color-text-white;
               }
@@ -2268,6 +2266,9 @@ html {
         padding: 0;
         &___inner {
           .header {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
             &__list{
               display:flex;
               align-items:center;
@@ -2282,6 +2283,17 @@ html {
                 font-size:0.9rem;
                 padding:7px 10px;
                 border-radius:8px;
+              }
+            }
+            &__sort{
+              &___item{
+                margin-left:12px;
+                border:1px solid #ddd;
+                border-radius:5px;
+                background:none;
+                font-weight:500;
+                outline:none;
+                padding:7px 20px;
               }
             }
             padding: 10px;
@@ -4233,6 +4245,9 @@ html {
                   width: calc(40% - 4px);
                   .save {
                     button {
+                      display:flex;
+                      justify-content:center;
+                      align-items:center;
                       width: 100%;
                       border: 2px solid #59a9ff;
                       background: none;
@@ -4242,6 +4257,7 @@ html {
                       font-size: 0.85rem;
                       color: $sp-color-text-primary;
                       .fa-size {
+                        font-size:1.1rem;
                         margin-right: 5px;
                       }
                     }

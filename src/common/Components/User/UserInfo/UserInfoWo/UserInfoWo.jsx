@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ConfirmWindow } from "../../../../lib/Confirm/ConfirmWIndow";
-import { updateUserEmailPhoneByCode } from "../../../../redux/features/User/userThunks";
+import { updateUserEmailByCode, updateUserEmailPhoneByCode } from "../../../../redux/features/User/userThunks";
 
 export default function UserInfoWo() {
   const [active, setActive] = useState({
@@ -27,7 +27,9 @@ export default function UserInfoWo() {
           ...active,
           email: true,
         });
-        dispatch(updateUserEmailPhoneByCode(dataUpdate.email, null));
+        // ** Test code user
+        const code = null;
+        dispatch(updateUserEmailByCode(code, dataUpdate.email));
       } else {
         setActive({
           ...active,

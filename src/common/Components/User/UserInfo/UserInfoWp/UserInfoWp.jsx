@@ -1,13 +1,25 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateUserByPhone } from "../../../../redux/features/User/userThunks";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Province } from "../../../../constants/Location";
+import { selectAddressData } from "../../../../redux/features/address/addressSelects";
+import { getListProvinces } from "../../../../redux/features/address/addressThunks";
+import { selectUserIsUpdate, selectUserLoading } from "../../../../redux/features/User/userSelect";
+import { updateUserByCode } from "../../../../redux/features/User/userThunks";
+import LoadingSpinnerCss from "../../../Loading/LoadingSpinnerCss";
 
 export default function UserInfoWp() {
   const dispatch = useDispatch();
+  const loadingUpdate = useSelector(selectUserLoading)
+  const isCheckUpdate = useSelector(selectUserIsUpdate)
+  const dataProvince = useSelector(selectAddressData)
   const [valueContact, setValueContact] = useState({
     email: "",
     phone: "",
   });
+
+  useEffect(() => {
+    dispatch(getListProvinces())
+  }, [])
   const [valueUser, setValueUser] = useState({
     avatar: "",
     fullName: "",
@@ -16,6 +28,7 @@ export default function UserInfoWp() {
       month: "",
       five: "",
     },
+    address: '',
     sex: null,
     earth: "",
   });
@@ -23,7 +36,12 @@ export default function UserInfoWp() {
   /** Update user By by phone */
   const onSubmitUser = (e) => {
     e.preventDefault();
-    dispatch(updateUserByPhone(valueUser));
+    dispatch(updateUserByCode({
+      data: {
+        code: '124',
+        valueUser
+      }
+    }))
   };
 
   /** Set value user */
@@ -43,7 +61,6 @@ export default function UserInfoWp() {
       });
     }
   };
-
   return (
     <>
       <div className="avatar inline">
@@ -101,16 +118,29 @@ export default function UserInfoWp() {
             <div className="qt">
               <label htmlFor="">
                 <i className="fa-solid fa-earth-africa fa-size" />
-                Quốc tịch
+                Địa điểm
               </label>
-              <input type="text" name="earth" disabled="" placeholder="Tìm quốc tịch " />
-              <button id="showEarthAddress">CHỌN QUỐC GIA</button>
+              <select name="address" onChange={onChangeUser} style={{ maxWidth: '100%', width: '100%' }}>
+                <option value={-1}>Chọn địa điểm </option>
+                {Province.map(item => {
+                  return (
+                    <option key={item.code} value={item.code}>{item.name}</option>
+                  )
+                })}
+
+              </select>
+              <button style={{ width: '100%', padding: '5px', marginTop: '10px' }} id="showEarthAddress">CHỌN QUỐC GIA</button>
             </div>
           </li>
           <div className="save">
             <button type="submit">
-              <i className="fa-solid fa-floppy-disk fa-size" />
-              Cập nhật thông tin
+              {
+                !loadingUpdate && !isCheckUpdate ? <> <i className="fa-solid fa-floppy-disk fa-size" />
+                  Lưu thông tin
+                </> :
+                  <LoadingSpinnerCss />
+              }
+
             </button>
           </div>
         </form>

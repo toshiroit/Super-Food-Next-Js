@@ -6,7 +6,7 @@ import { hideDisplay } from "../../../redux/features/showDisplay/showDisplaySlic
 import { confirmRegUser } from "../../../redux/features/User/userSlice";
 
 export default function LoginConfirmInfo() {
-  const phoneLogin = useSelector((state) => state.UserSlice);
+  const phoneLogin = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
   const router = useRouter();
   const [validation, setValidation] = useState({
@@ -125,7 +125,7 @@ export default function LoginConfirmInfo() {
     return error;
   };
 
-  useEffect(() => {}, [formError, userConfirm]);
+  useEffect(() => { }, [formError, userConfirm]);
 
   /** Set data userConfirm**/
   const onIsValidation = (e) => {

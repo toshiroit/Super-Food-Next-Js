@@ -149,38 +149,38 @@ export default function Header() {
                     </span>
                   </a>
                 </Link>
+                <ul className="menu">
+                  <li className="menu__item address">
+                    <p>Đăk Lăk</p>
+                    <i className="fa-solid fa-angle-down fa-size" />
+                  </li>
+                  <li className="menu__item">
+                    <p>Bộ sưu tập</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Ăn uống</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Khám phá</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Tin tức</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Giao hàng</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Chi nhánh</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Hõ trợ</p>
+                  </li>
+                  <li className="menu__item">
+                    <p>Báo lỗi</p>
+                  </li>
+                </ul>
                 <div className="bottombar__left___group">
-                  <ul className="menu">
-                    <li className="menu__item address">
-                      <h4 className="info">Địa chỉ</h4>
-                      <p>Đăk Lăk</p>
-                      <i className="fa-solid fa-angle-down fa-size" />
-                    </li>
-                    <li className="menu__item">
-                      <p>Bộ sưu tập</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Ăn uống</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Khám phá</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Tin tức</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Giao hàng</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Chi nhánh</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Hõ trợ</p>
-                    </li>
-                    <li className="menu__item">
-                      <p>Báo lỗi</p>
-                    </li>
-                  </ul>
+
                   {/**  <Search />**/}
                 </div>
               </div>
@@ -198,7 +198,9 @@ export default function Header() {
                       <div className="text cart">
                         <i className="fa-solid fa-basket-shopping fa-size" />
                         <p>Giỏ hàng</p>
-                        <h4 className="quality">14</h4>
+                        <div className="quality">
+                          14
+                        </div>
                       </div>
                     </a>
                   </Link>

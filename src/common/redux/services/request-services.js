@@ -1,18 +1,18 @@
 import axios from "axios";
-import { BASE_API } from "../../constants/ApiLink";
-
 const setHeader = (isAuthRequired, contentType, Authorization) => {
   if (isAuthRequired) {
     axios.defaults.headers.common["Authorization"] = Authorization;
   } else {
     delete axios.defaults.headers.common["Authorization"];
   }
+  axios.defaults.headers.common['Access-Control-Allow-Credentials'] = true
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = ['http://localhost:3000'];
+  axios.defaults.headers.common['Access-Control-Allow-Headers'] = ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
   axios.defaults.headers.common["Content-Type"] = contentType;
 };
 const createRequest = (method, url, body, isAuthRequired, contentType, Authorization) => {
   return axios({
     method: method,
-    //url: BASE_API + url,
     url: url,
     data: body,
     headers: setHeader(isAuthRequired, contentType, Authorization),
