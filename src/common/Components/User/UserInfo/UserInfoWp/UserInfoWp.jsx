@@ -3,23 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Province } from "../../../../constants/Location";
 import { selectAddressData } from "../../../../redux/features/address/addressSelects";
 import { getListProvinces } from "../../../../redux/features/address/addressThunks";
-import { selectUserIsUpdate, selectUserLoading } from "../../../../redux/features/User/userSelect";
+import {
+  selectUserIsUpdate,
+  selectUserLoading,
+} from "../../../../redux/features/User/userSelect";
 import { updateUserByCode } from "../../../../redux/features/User/userThunks";
 import LoadingSpinnerCss from "../../../Loading/LoadingSpinnerCss";
 
 export default function UserInfoWp() {
   const dispatch = useDispatch();
-  const loadingUpdate = useSelector(selectUserLoading)
-  const isCheckUpdate = useSelector(selectUserIsUpdate)
-  const dataProvince = useSelector(selectAddressData)
+  const loadingUpdate = useSelector(selectUserLoading);
+  const isCheckUpdate = useSelector(selectUserIsUpdate);
+  const dataProvince = useSelector(selectAddressData);
   const [valueContact, setValueContact] = useState({
     email: "",
     phone: "",
   });
 
   useEffect(() => {
-    dispatch(getListProvinces())
-  }, [])
+    dispatch(getListProvinces());
+  }, []);
   const [valueUser, setValueUser] = useState({
     avatar: "",
     fullName: "",
@@ -28,7 +31,7 @@ export default function UserInfoWp() {
       month: "",
       five: "",
     },
-    address: '',
+    address: "",
     sex: null,
     earth: "",
   });
@@ -36,17 +39,23 @@ export default function UserInfoWp() {
   /** Update user By by phone */
   const onSubmitUser = (e) => {
     e.preventDefault();
-    dispatch(updateUserByCode({
-      data: {
-        code: '124',
-        valueUser
-      }
-    }))
+    dispatch(
+      updateUserByCode({
+        data: {
+          code: "124",
+          valueUser,
+        },
+      })
+    );
   };
 
   /** Set value user */
   const onChangeUser = (e) => {
-    if (e.target.name === "day" || e.target.name === "month" || e.target.name === "five") {
+    if (
+      e.target.name === "day" ||
+      e.target.name === "month" ||
+      e.target.name === "five"
+    ) {
       setValueUser({
         ...valueUser,
         date: {
@@ -76,7 +85,11 @@ export default function UserInfoWp() {
               <i className="fa-solid fa-signature fa-size" />
               Tên người dùng
             </label>
-            <input type="text" name="fullName" placeholder="Thêm tên người dùng " />
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Thêm tên người dùng "
+            />
           </li>
           <li className="infoUser__item">
             <label htmlFor="">
@@ -120,27 +133,33 @@ export default function UserInfoWp() {
                 <i className="fa-solid fa-earth-africa fa-size" />
                 Địa điểm
               </label>
-              <select name="address" onChange={onChangeUser} style={{ maxWidth: '100%', width: '100%' }}>
+              <select
+                name="address"
+                onChange={onChangeUser}
+                style={{ maxWidth: "100%", width: "100%" }}
+              >
                 <option value={-1}>Chọn địa điểm </option>
-                {Province.map(item => {
+                {Province.map((item) => {
                   return (
-                    <option key={item.code} value={item.code}>{item.name}</option>
-                  )
+                    <option key={item.code} value={item.code}>
+                      {item.name}
+                    </option>
+                  );
                 })}
-
               </select>
-              <button style={{ width: '100%', padding: '5px', marginTop: '10px' }} id="showEarthAddress">CHỌN QUỐC GIA</button>
             </div>
           </li>
           <div className="save">
             <button type="submit">
-              {
-                !loadingUpdate && !isCheckUpdate ? <> <i className="fa-solid fa-floppy-disk fa-size" />
+              {!loadingUpdate && !isCheckUpdate ? (
+                <>
+                  {" "}
+                  <i className="fa-solid fa-floppy-disk fa-size" />
                   Lưu thông tin
-                </> :
-                  <LoadingSpinnerCss />
-              }
-
+                </>
+              ) : (
+                <LoadingSpinnerCss />
+              )}
             </button>
           </div>
         </form>

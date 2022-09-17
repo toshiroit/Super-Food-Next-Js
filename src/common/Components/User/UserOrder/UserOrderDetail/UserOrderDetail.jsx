@@ -12,10 +12,12 @@ export default function UserOrderDetail() {
       </div>
       <div className="content__order">
         <div className="content__order___imageName">
-          <img
-            src="https://cdn.cet.edu.vn/wp-content/uploads/2019/04/fastfood-la-gi.jpg"
-            alt=""
-          />
+          <picture>
+            <img
+              src="https://cdn.cet.edu.vn/wp-content/uploads/2019/04/fastfood-la-gi.jpg"
+              alt=""
+            />
+          </picture>
           <div className="namePrice">
             <h4>
               <i className="fa-solid fa-signature fa-size" /> Lẩu Thái Hải Sản
@@ -48,6 +50,11 @@ export default function UserOrderDetail() {
                 <b>Tổng tiền : </b>140.000 đ
               </span>
             </div>
+          </div>
+          <div className="removeOrder">
+            <button type="button" name="removeOrder">
+              Hủy đơn hàng{" "}
+            </button>
           </div>
         </div>
         <div className="content__order___infoW">

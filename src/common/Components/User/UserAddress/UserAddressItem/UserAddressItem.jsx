@@ -1,6 +1,15 @@
-export default function UserAddressItem() {
+import Link from "next/link";
+import { RouterLinkConfig } from "../../../../constants/RouterLink";
+
+export default function UserAddressItem({ active }) {
   return (
-    <li className="content__address___main____item root">
+    <li
+      className={
+        active
+          ? `content__address___main____item root`
+          : `content__address___main____item `
+      }
+    >
       <div className="title">
         <h4>
           <i className="fa-solid fa-location-dot" /> Địa chỉ gốc
@@ -27,10 +36,14 @@ export default function UserAddressItem() {
         </div>
       </div>
       <div className="btn">
-        <button>
-          <i className="fa-solid fa-eye fa-size" /> Xem chi tiết
-        </button>
+        <Link href={RouterLinkConfig.userAddressDetail(1)}>
+          <a>
+            <button>
+              <i className="fa-solid fa-eye fa-size" /> Xem chi tiết
+            </button>
+          </a>
+        </Link>
       </div>
     </li>
-  )
+  );
 }

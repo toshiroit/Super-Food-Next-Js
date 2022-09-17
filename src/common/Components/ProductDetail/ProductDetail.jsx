@@ -3,11 +3,17 @@ import ProductDetailContent from "./ProductDetailContent/ProductDetailContent";
 import ProductDetailComment from "./ProductDetailComment/ProductDetailComment";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductByCode, getProductByName } from "../../redux/features/product/productThunks";
+import {
+  getProductByCode,
+  getProductByName,
+} from "../../redux/features/product/productThunks";
 import { selectNotifications } from "../../redux/features/notification/notificationSelects";
 import NotificationRoot from "../Notification/NotificationRoot";
 import BreadCrumb from "../Breadcrumb/BreadCrumb";
-import { selectProductDetail, selectProductLoading } from '../../redux/features/product/productSelects'
+import {
+  selectProductDetail,
+  selectProductLoading,
+} from "../../redux/features/product/productSelects";
 import ProductDetailRoot from "./ProductDetailRoot/ProductDetailRoot";
 import LoadingSpinner from "../Loading/LoadingSpinner";
 import { RouterLinkConfig } from "../../constants/RouterLink";
@@ -17,22 +23,22 @@ export default function ProductDetail() {
   const router = useRouter();
   const dispatch = useDispatch();
   const dataProductDetail = useSelector(selectProductDetail);
-  const dataNotification = useSelector(selectNotifications)
+  const dataNotification = useSelector(selectNotifications);
   const [maxQuality, setMaxQuality] = useState();
 
-  //** Set url top bar data BreadCrumb 
+  //** Set url top bar data BreadCrumb
   const [dataBreadcrumb] = useState([
-    { name: 'index', link: '/' },
-    { name: 'Sản phẩm ', link: '/' },
+    { name: "index", link: "/" },
+    { name: "Sản phẩm ", link: "/" },
     { name: `${router.query.name}`, link: `/product/${router.query.name}` },
-  ])
+  ]);
   useEffect(() => {
     //dispatch(getProductByName(router.query.name, null))
-    const result = router.query.name.split('.', 2)
+    const result = router.query.name.split(".", 2);
     if (result[1]) {
-      dispatch(getProductByCode(Number(result[1])))
+      dispatch(getProductByCode(Number(result[1])));
     }
-  }, [router.query.name])
+  }, [router.query.name]);
 
   return (
     <>
@@ -43,10 +49,12 @@ export default function ProductDetail() {
             <div className="detail__content___breadcrumb breadcrumb__content">
               <BreadCrumb data={dataBreadcrumb} />
             </div>
-            <div className={`detail__content___product ${dataProductDetail ? '' : 'productDetailLoading'}`}>
-              {
-                <ProductDetailRoot />
-              }
+            <div
+              className={`detail__content___product ${
+                dataProductDetail ? "" : "productDetailLoading"
+              }`}
+            >
+              {<ProductDetailRoot />}
             </div>
             <div className="detail__content___wop">
               <ProductDetailContent />
@@ -59,7 +67,13 @@ export default function ProductDetail() {
                 </h4>
               </div>
               <div className="evaluate">
-                <ProductDetailComment codeProduct={dataProductDetail && dataProductDetail[0] && dataProductDetail[0].codeProduct} />
+                <ProductDetailComment
+                  codeProduct={
+                    dataProductDetail &&
+                    dataProductDetail[0] &&
+                    dataProductDetail[0].codeProduct
+                  }
+                />
               </div>
             </div>
           </div>
@@ -79,10 +93,12 @@ export default function ProductDetail() {
                   <span>9.4</span>
                 </div>
                 <div className="image">
-                  <img
-                    src="https://image.cooky.vn/posproduct/g0/17280/s400x400/5048d46e-2b7e-430d-a750-6c99929f76cd.jpeg"
-                    alt=""
-                  />
+                  <picture>
+                    <img
+                      src="https://image.cooky.vn/posproduct/g0/17280/s400x400/5048d46e-2b7e-430d-a750-6c99929f76cd.jpeg"
+                      alt=""
+                    />
+                  </picture>
                 </div>
                 <div className="name">
                   <p>Set cơm việt buổi trưa</p>

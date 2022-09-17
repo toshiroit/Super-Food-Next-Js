@@ -4,7 +4,7 @@ import { RouterLinkConfig } from "../../../../constants/RouterLink";
 export default function UserOrderItem() {
   return (
     <Link href={RouterLinkConfig.userOrderDetail(1)}>
-      <a >
+      <a>
         <div className="content__order___item">
           <div className="content__order___item____dateIsShip">
             <span className="fxLeft">Ngày mua : 20/10/2022 - 10:24 am</span>
@@ -16,10 +16,12 @@ export default function UserOrderItem() {
             <div className="content__order___item____wp_____nameImage wp__left">
               <div className="tw">
                 <div className="image">
-                  <img
-                    src="https://image.cooky.vn/posproduct/g0/13848/s1124x1124/b1b87e25-11b9-4f9f-b9d5-af5753a7ffda.jpeg"
-                    alt=""
-                  />
+                  <picture>
+                    <img
+                      src="https://image.cooky.vn/posproduct/g0/13848/s1124x1124/b1b87e25-11b9-4f9f-b9d5-af5753a7ffda.jpeg"
+                      alt=""
+                    />
+                  </picture>
                 </div>
                 <div className="name">
                   <h4>
@@ -85,8 +87,7 @@ export default function UserOrderItem() {
             </div>
           </div>
         </div>
-
       </a>
     </Link>
-  )
+  );
 }

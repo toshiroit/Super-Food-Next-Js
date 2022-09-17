@@ -16,11 +16,11 @@ export default function UserAddress() {
       </div>
       <div className="content__address">
         <ul className="content__address___main">
-            <UserAddressItem/>
-            <UserAddressItem/>
-            <UserAddressItem/>
-            <UserAddressItem/>
-            <UserAddressItem/>
+          <UserAddressItem active={true} />
+          <UserAddressItem />
+          <UserAddressItem />
+          <UserAddressItem />
+          <UserAddressItem />
         </ul>
         <div className="content__address___not">
           <div className="title">

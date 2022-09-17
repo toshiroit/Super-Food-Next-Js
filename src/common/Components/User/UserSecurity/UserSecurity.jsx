@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { RouterLinkConfig } from "../../../constants/RouterLink";
+
 export default function UserSecurity() {
   return (
     <div className="content">
@@ -21,7 +24,11 @@ export default function UserSecurity() {
                   <span>Bảo mật cấp 1</span>
                   <div className="status">
                     <span className="inActive">Hoạt động </span>
-                    <button>Thay đổi</button>
+                    <Link href={RouterLinkConfig.userSecuritySetting()}>
+                      <a>
+                        <button>Thay đổi</button>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>

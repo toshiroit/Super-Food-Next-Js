@@ -80,8 +80,8 @@ export default function LoginCode() {
           <p>Xem mã được gửi qua số điện thoại của bạn có 6 chữ số</p>
         </div>
         <form onSubmit={onCheckCode} method="POST">
-          <div className="inputLogin">
-            <ul className="inputLogin__code">
+          <div className="inputCode">
+            <ul className="inputLogin__code" style={{ overflowX: "scroll" }}>
               <li className="inputLogin__code___item">
                 <input
                   onChange={onGetCode}
