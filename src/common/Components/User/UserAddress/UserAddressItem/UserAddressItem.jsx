@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { RouterLinkConfig } from "../../../../constants/RouterLink";
+import { useRouter } from "next/router";
 
-export default function UserAddressItem({ active }) {
+export default function UserAddressItem({ active,value }) {
   return (
     <li
       className={
@@ -16,10 +17,11 @@ export default function UserAddressItem({ active }) {
         </h4>
       </div>
       <div className="content">
-        <div className="content__name tw">
+        <div className="content__name tw" >
           <span>
             <i className="fa-solid fa-signature fa-size" /> Họ và tên :{" "}
-            <b>Đậu Văn Nam </b>
+            {/* <b >{addRess} </b> */}
+            {value.name}
           </span>
         </div>
         <div className="content__phone tw">
@@ -36,7 +38,7 @@ export default function UserAddressItem({ active }) {
         </div>
       </div>
       <div className="btn">
-        <Link href={RouterLinkConfig.userAddressDetail(1)}>
+        <Link href={RouterLinkConfig.userAddressDetail(value.code)}>
           <a>
             <button>
               <i className="fa-solid fa-eye fa-size" /> Xem chi tiết

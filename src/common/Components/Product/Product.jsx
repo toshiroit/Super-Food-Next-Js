@@ -25,7 +25,7 @@ export default function Product({ size, isShowAll }) {
       </div>
       {
         isShowAll ? <div className="showAll">
-          <span>XEM TẤT CẢ   <i class="fa-solid fa-chevron-right"></i></span>
+          <span>XEM TẤT CẢ   <i className="fa-solid fa-chevron-right"></i></span>
         </div> : ''
       }
     </div>

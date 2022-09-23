@@ -1,7 +1,12 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { selectUser, selectUsers } from "../../../redux/features/User/userSelect";
 import UserAddressItem from "./UserAddressItem/UserAddressItem";
 
 export default function UserAddress() {
+  const userAddressArr = useSelector(selectUser);
+  console.log(userAddressArr);
+
   return (
     <div className="content">
       <div className="title">
@@ -16,11 +21,15 @@ export default function UserAddress() {
       </div>
       <div className="content__address">
         <ul className="content__address___main">
-          <UserAddressItem active={true} />
-          <UserAddressItem />
-          <UserAddressItem />
-          <UserAddressItem />
-          <UserAddressItem />
+          {
+            userAddressArr&&userAddressArr.address.map((item=>{
+             return (
+                 <UserAddressItem active={true} value={item} key={item.code} />
+             )
+            }))
+          }
+         
+     
         </ul>
         <div className="content__address___not">
           <div className="title">
