@@ -1,10 +1,37 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../../redux/features/User/userSelect";
+
 export default function UserAddressDetail() {
+  const router = useRouter();
+  const userArray = useSelector(selectUser);
+  const [valueAddress,setValueAddress]= useState({
+
+  })
+  const [userDetail, setUserDetail] = useState(); 
+  useEffect(()=>{
+    let isAddress = false
+    for(let i =0;i<userArray.address.length;i++){
+      if(userArray.address[i].code === router.query.code){
+        isAddress = true
+        setValueAddress({
+          name:userArray.address[i].name
+        })
+      }
+    }
+    if(!isAddress){
+      router.push('/user/address')
+    }
+
+  },[router.query.code])
+  
   return (
     <div className="content">
+      {console.log(valueAddress)}
       <div className="title">
         <h4>
           <i className="fa-solid fa-location-dot fa-size" /> Chi tiết địa chỉ
-          name
         </h4>
         <i id="showMenuUserIdx" className="fa-solid fa-bars" />
       </div>
@@ -12,9 +39,9 @@ export default function UserAddressDetail() {
         <div className="content__address___main">
           <div className="content__address___main____csItem">
             <label htmlFor="">
-              <i className="fa-solid fa-signature fa-size" /> Họ và tên
+              <i className="fa-solid fa-signature fa-size" /> Họ và tên 
             </label>
-            <input type="text" name="" id="" />
+            <input type="text" value={valueAddress.name} name="adasdasd" id="asdasdasd" />
           </div>
           <div className="content__address___main____csItem">
             <label htmlFor="">
@@ -42,7 +69,9 @@ export default function UserAddressDetail() {
               Số nhà / Đường
             </label>
             <select>
-              <option value="">#</option>
+              {/* <option value={userDetail.address.full} >{userDetail.address.full}</option>
+              <option value={userDetail.address.city}>{userDetail.address.city}</option>
+              <option value={userDetail.address.district}>{userDetail.address.district}</option> */}
             </select>
           </div>
           <div className="content__address___main____csItem">
